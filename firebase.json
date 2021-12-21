@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "put-gang-landing",
     "public": "build",
     "ignore": [
       "firebase.json",
