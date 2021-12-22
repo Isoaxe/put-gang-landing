@@ -21,6 +21,11 @@ code {
 }
 
 @font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: local('Montserrat-SemiBold'), url(./fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
   font-family: 'Open-Sans';
   src: local('Lato-Black'), url(./fonts/OpenSans/OpenSans-ExtraBold.ttf) format('truetype');
 }
