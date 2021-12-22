@@ -1,0 +1,31 @@
+.Nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin: 31px 0px;
+}
+
+.Nav img {
+  width: 136px;
+}
+
+.Nav button {
+  width: 67px;
+  height: 36px;
+  color: #FFFFFF;
+  background-color: #8667E7;
+  border: 0;
+  border-radius: 5px;
+  font-size: 12px;
+  padding-bottom: 3px;
+  font-family: 'Montserrat-SemiBold', Arial, sans-serif;
+  transition: margin-bottom 0.4s, box-shadow 0.4s;
+}
+
+.Nav button:hover {
+  cursor: pointer;
+  margin-bottom: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
