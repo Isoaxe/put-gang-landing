@@ -1,6 +1,7 @@
 import Nav from './../components/Nav';
 import Hero from './../components/Hero';
 import Membership from './../components/Membership';
+import EmailSignup from './../components/EmailSignup';
 import './css/App.css';
 
 
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <div className="inner">
         <Membership />
+        <EmailSignup />
       </div>
     </div>
   );
