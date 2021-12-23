@@ -1,4 +1,3 @@
-import hero from './../assets/hero.jpg';
 import vid from './../assets/video-intro.mp4';
 import vidImg from './../assets/video-img.jpg';
 import './css/Hero.css';
