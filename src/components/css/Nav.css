@@ -1,4 +1,4 @@
-.Nav {
+.nav {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -7,11 +7,11 @@
   margin: 31px 0px;
 }
 
-.Nav img {
+.nav img {
   width: 136px;
 }
 
-.Nav button {
+.nav button {
   width: 67px;
   height: 36px;
   color: #FFFFFF;
@@ -24,7 +24,7 @@
   transition: margin-bottom 0.4s, box-shadow 0.4s;
 }
 
-.Nav button:hover {
+.nav button:hover {
   cursor: pointer;
   margin-bottom: 12px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
