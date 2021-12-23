@@ -6,7 +6,7 @@ function Nav() {
   return (
     <div className="nav">
       <img src={logo} alt="Logo" />
-      <button onClick='#'>Login</button>
+      <a href="https://put-gang-console.web.app">Login</a>
     </div>
   );
 }
