@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', 'OpenSans';
+  font-family: 'Montserrat-Medium', 'Montserrat-SemiBold', 'OpenSans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
