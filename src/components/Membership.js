@@ -3,7 +3,12 @@ import watch from './../assets/watch.jpg';
 import './css/Membership.css';
 
 
-function Membership() {
+function Membership(props) {
+
+  function openModal() {
+    props.setLearnModalVisible(true);
+  }
+
   return (
     <div>
       <h1 className="header">Select Your Membership Level</h1>
@@ -20,7 +25,7 @@ function Membership() {
           </ul>
           <p className="discussion-text">Gain view-only access to our private discord channel to see buying ideas, new content, previously recorded stock classes, and live stock discussion in the discord with experienced traders.</p>
           <div className="button-container">
-            <button onClick='#'>Learn More</button>
+            <button onClick={openModal}>Learn More</button>
           </div>
         </div>
         <div className="memb-container">
@@ -34,7 +39,7 @@ function Membership() {
           </ul>
           <p className="discussion-text">Access to all "watch" perks plus the ability to ask questions and interact with experienced traders.</p>
           <div className="button-container">
-            <button onClick='#'>Learn More</button>
+            <button onClick={openModal}>Learn More</button>
           </div>
         </div>
       </div>
