@@ -5,8 +5,14 @@ import './css/Membership.css';
 
 function Membership(props) {
 
-  function openModal() {
+  function openModalWithWatch() {
     props.setLearnModalVisible(true);
+    props.setLearnModalChoice("watch");
+  }
+
+  function openModalWithJoin() {
+    props.setLearnModalVisible(true);
+    props.setLearnModalChoice("join");
   }
 
   return (
@@ -25,7 +31,7 @@ function Membership(props) {
           </ul>
           <p className="discussion-text">Gain view-only access to our private discord channel to see buying ideas, new content, previously recorded stock classes, and live stock discussion in the discord with experienced traders.</p>
           <div className="button-container">
-            <button onClick={openModal}>Learn More</button>
+            <button onClick={openModalWithWatch}>Learn More</button>
           </div>
         </div>
         <div className="memb-container">
@@ -39,7 +45,7 @@ function Membership(props) {
           </ul>
           <p className="discussion-text">Access to all "watch" perks plus the ability to ask questions and interact with experienced traders.</p>
           <div className="button-container">
-            <button onClick={openModal}>Learn More</button>
+            <button onClick={openModalWithJoin}>Learn More</button>
           </div>
         </div>
       </div>
