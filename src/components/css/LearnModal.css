@@ -70,3 +70,31 @@
 .modal-option-price {
   color: #AE8DF4;
 }
+
+.modal-button-container {
+  margin: 30px auto 0px;
+  transition: margin 0.4s;
+}
+
+.modal-button-container:hover {
+  margin: 24px auto 6px;
+}
+
+.modal-button-container button {
+  width: 85%;
+  height: 52px;
+  color: #FFFFFF;
+  background-color: #AE8DF4;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  padding-bottom: 3px;
+  font-family: 'Montserrat-SemiBold', Arial, sans-serif;
+  transition: box-shadow 0.4s;
+}
+
+.modal-button-container button:hover {
+  cursor: pointer;
+  background-color: #8E63EB;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

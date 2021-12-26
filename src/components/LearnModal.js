@@ -39,6 +39,9 @@ function LearnModal(props) {
             <input type="radio" name="price-options" id="join" />
           </div>
         </div>
+        <div className="modal-button-container">
+          <button onClick="#/">Continue</button>
+        </div>
       </div>
     </Modal>
   );
