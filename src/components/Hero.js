@@ -7,6 +7,7 @@ function Hero(props) {
 
   function openModal() {
     props.setLearnModalVisible(true);
+    props.setLearnModalChoice("watch");
   }
 
   return (
