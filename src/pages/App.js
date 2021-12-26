@@ -9,19 +9,28 @@ import './css/App.css';
 
 function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
+  const [learnModalChoice, setLearnModalChoice] = useState("");
 
   return (
     <div className="wrapper">
       <div className="inner">
         <Nav />
       </div>
-      <Hero setLearnModalVisible={setLearnModalVisible} />
+      <Hero
+        setLearnModalVisible={setLearnModalVisible}
+        setLearnModalChoice={setLearnModalChoice}
+      />
       <div className="inner">
-        <Membership setLearnModalVisible={setLearnModalVisible} />
+        <Membership
+          setLearnModalVisible={setLearnModalVisible}
+          setLearnModalChoice={setLearnModalChoice}
+        />
         <EmailSignup />
       </div>
       <LearnModal
         learnModalVisible={learnModalVisible} setLearnModalVisible={setLearnModalVisible}
+        learnModalChoice={learnModalChoice}
+        setLearnModalChoice={setLearnModalChoice}
       />
     </div>
   );
