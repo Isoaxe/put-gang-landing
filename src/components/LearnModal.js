@@ -5,15 +5,19 @@ import './css/LearnModal.css';
 function LearnModal(props) {
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
-  let action, amount;
+  let action, amount, watchChecked, joinChecked;
 
   if (choice === "watch") {
     action = "Watch";
     amount = "50";
+    watchChecked = "checked";
+    joinChecked = "";
   } else
   if (choice === "join") {
     action = "Join";
     amount = "150";
+    joinChecked = "checked";
+    watchChecked = "";
   }
 
   function close() {
@@ -44,14 +48,14 @@ function LearnModal(props) {
               <p className="modal-option-name">Watch the discussion</p>
               <p className="modal-option-price">$50 / month</p>
             </label>
-            <input type="radio" name="price-options" id="watch" onClick={() => props.setLearnModalChoice("watch")} />
+            <input type="radio" name="price-options" id="watch" onChange={() => props.setLearnModalChoice("watch")} checked={watchChecked} />
           </div>
           <div className="modal-option">
             <label for="join">
               <p className="modal-option-name">Join the discussion</p>
               <p className="modal-option-price">$150 / month</p>
             </label>
-            <input type="radio" name="price-options" id="join" onClick={() => props.setLearnModalChoice("join")} />
+            <input type="radio" name="price-options" id="join" onChange={() => props.setLearnModalChoice("join")} checked={joinChecked} />
           </div>
         </div>
         <div className="modal-button-container">
