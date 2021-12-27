@@ -9,6 +9,8 @@
 }
 
 .inner {
-  width: 100%;
+  width: calc(100% - 30px);
   max-width: 940px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
