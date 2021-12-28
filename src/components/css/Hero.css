@@ -2,7 +2,7 @@
   background: url('./../../assets/hero.jpg') no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin-bottom: 60px;
 }
 
@@ -95,5 +95,10 @@
   .hero-right {
     max-width: 80%;
     padding-right: 0px;
+  }
+
+  .hero-right video {
+    padding-top: 30px;
+    max-height: none;
   }
 }
