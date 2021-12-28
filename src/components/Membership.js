@@ -19,7 +19,7 @@ function Membership(props) {
     <div>
       <h1 className="header">Select Your Membership Level</h1>
       <div className="membership">
-        <div className="memb-container">
+        <div className="memb-container memb-left">
           <img src={watch} alt="Watch"/>
           <h2>Watch the Discussion</h2>
           <ul className="discussion-text">
@@ -34,7 +34,7 @@ function Membership(props) {
             <button onClick={openModalWithWatch}>Learn More</button>
           </div>
         </div>
-        <div className="memb-container">
+        <div className="memb-container memb-right">
           <img src={join} alt="Join"/>
           <h2>Join the Discussion</h2>
           <p className="discussion-text">Everything that comes with "watch" +</p>

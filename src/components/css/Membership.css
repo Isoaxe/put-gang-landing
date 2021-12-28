@@ -10,16 +10,24 @@
   text-align: left;
   font-family: 'Open-Sans';
   font-size: 34px;
-  margin: 0px 0px 50px 15px;
+  margin-bottom: 50px;
 }
 
 .memb-container {
   width: 50%;
-  margin: 0px 15px;
+}
+
+.memb-left {
+  margin-right: 15px;
+}
+
+.memb-right {
+  margin-left: 15px;
 }
 
 .memb-container img {
   border-radius: 7px;
+  max-width: 100%;
 }
 
 .memb-container h2 {
@@ -62,4 +70,22 @@
 .membership button:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .membership {
+    flex-direction: column;
+  }
+
+  .memb-container {
+    width: 100%;
+  }
+
+  .memb-left {
+    margin-bottom: 50px;
+  }
+
+  .memb-right {
+    margin-left: 0px;
+  }
 }
