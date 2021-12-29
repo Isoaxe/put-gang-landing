@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { CONSOLE_BASE_URL } from './../util/urls';
 import './css/LearnModal.css';
 
 
@@ -59,6 +60,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
+          <a href={`${CONSOLE_BASE_URL}/session/signup`}>Continue</a>
           <button onClick={continueButton}>Continue</button>
         </div>
       </div>
