@@ -25,10 +25,6 @@ function LearnModal(props) {
     props.setLearnModalVisible(false);
   }
 
-  function continueButton() {
-    console.log("Continue button clicked.");
-  }
-
   return (
     <Modal
 			isOpen={props.learnModalVisible}
@@ -61,7 +57,6 @@ function LearnModal(props) {
         </div>
         <div className="modal-button-container">
           <a href={`${CONSOLE_BASE_URL}/session/signup`}>Continue</a>
-          <button onClick={continueButton}>Continue</button>
         </div>
       </div>
     </Modal>
