@@ -80,7 +80,7 @@
   margin: 24px auto 6px;
 }
 
-.modal-button-container button {
+.modal-button-container a {
   width: 85%;
   height: 52px;
   color: #FFFFFF;
@@ -93,7 +93,7 @@
   transition: box-shadow 0.4s;
 }
 
-.modal-button-container button:hover {
+.modal-button-container a:hover {
   cursor: pointer;
   background-color: #8E63EB;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
