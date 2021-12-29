@@ -3,4 +3,4 @@
  */
 
 
-export const CONSOLE_BASE_URL = "https://put-gang-console.web.app/";
+export const CONSOLE_BASE_URL = "https://put-gang-console.web.app";
