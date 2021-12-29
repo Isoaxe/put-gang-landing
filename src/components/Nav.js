@@ -7,7 +7,7 @@ function Nav() {
   return (
     <div className="nav">
       <img src={logo} alt="Logo" />
-      <a href={`${CONSOLE_BASE_URL}session/signin`}>Login</a>
+      <a href={`${CONSOLE_BASE_URL}/session/signin`}>Login</a>
     </div>
   );
 }
