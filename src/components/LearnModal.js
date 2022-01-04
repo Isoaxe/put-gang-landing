@@ -56,7 +56,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
-          <a href={`${CONSOLE_BASE_URL}/session/signup`}>Continue</a>
+          <a href={`${CONSOLE_BASE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`}>Continue</a>
         </div>
       </div>
     </Modal>
