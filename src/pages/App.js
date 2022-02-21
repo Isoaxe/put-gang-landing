@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import Nav from './../components/Nav';
 import Hero from './../components/Hero';
 import Membership from './../components/Membership';
 import EmailSignup from './../components/EmailSignup';
 import LearnModal from './../components/LearnModal';
+import { STRIPE_PUBLIC_KEY_TEST } from './../util/constants';
 import './css/App.css';
 
+
+const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
 function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
