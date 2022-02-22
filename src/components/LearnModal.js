@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { CONSOLE_BASE_URL } from './../util/urls';
+import { CONSOLE_URL } from './../util/urls';
 import './css/LearnModal.css';
 
 
@@ -56,7 +56,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
-          <a href={`${CONSOLE_BASE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`}>Continue</a>
+          <a href={`${CONSOLE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`}>Continue</a>
         </div>
       </div>
     </Modal>
