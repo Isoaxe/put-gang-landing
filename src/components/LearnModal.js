@@ -25,6 +25,10 @@ function LearnModal(props) {
     props.setLearnModalVisible(false);
   }
 
+  function continueToPayments () {
+
+  }
+
   return (
     <Modal
 			isOpen={props.learnModalVisible}
@@ -56,7 +60,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
-          <a href={`${CONSOLE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`}>Continue</a>
+          <button onClick={continueToPayments}>Continue</button>
         </div>
       </div>
     </Modal>
