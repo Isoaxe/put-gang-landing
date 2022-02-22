@@ -1,0 +1,26 @@
+.overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(94, 105, 113, 0.9);
+}
+
+.content {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -30%);
+  font-family: 'Montserrat-Medium';
+  background-color: #FFFFFF;
+  color: #5E6971;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  max-height: 95vh;
+  min-height: 480px;
+  border-radius: 8px;
+}
