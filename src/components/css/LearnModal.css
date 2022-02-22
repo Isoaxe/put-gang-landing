@@ -82,7 +82,7 @@
   margin: 24px auto 6px;
 }
 
-.modal-button-container a {
+.modal-button-container button {
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -99,7 +99,7 @@
   transition: box-shadow 0.4s;
 }
 
-.modal-button-container a:hover {
+.modal-button-container button:hover {
   cursor: pointer;
   background-color: #8E63EB;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
