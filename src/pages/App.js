@@ -58,6 +58,7 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
       />
       <EmailModal
+        learnModalChoice={learnModalChoice}
         emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
       />
