@@ -26,11 +26,9 @@ function LearnModal(props) {
     props.setLearnModalVisible(false);
   }
 
-  async function continueToPayments () {
-    const secret = await createPaymentIntent(choice);
-    props.setClientSecret(secret);
+  function continueToEmail () {
     props.setLearnModalVisible(false);
-    props.setPaymentsModalVisible(true);
+    props.setEmailModalVisible(true);
   }
 
   return (
@@ -64,7 +62,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
-          <button onClick={continueToPayments}>Continue</button>
+          <button onClick={continueToEmail}>Continue</button>
         </div>
       </div>
     </Modal>
