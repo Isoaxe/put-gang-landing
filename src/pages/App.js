@@ -15,6 +15,7 @@ const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
 function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
+  const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
   const [learnModalChoice, setLearnModalChoice] = useState("");
   const [referrerId, setReferrerId] = useState("");
@@ -54,8 +55,7 @@ function App() {
         learnModalChoice={learnModalChoice}
         setLearnModalChoice={setLearnModalChoice}
         referrerId={referrerId}
-        setClientSecret={setClientSecret}
-        setPaymentsModalVisible={setPaymentsModalVisible}
+        setEmailModalVisible={setEmailModalVisible}
       />
       {clientSecret && (
         <Elements stripe={stripePromise} options={options} >
