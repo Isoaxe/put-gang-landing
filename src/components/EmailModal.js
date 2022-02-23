@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { createPaymentIntent } from './../util/stripe';
 import './css/EmailModal.css';
+import './css/shared.css';
 
 
 function EmailModal(props) {
