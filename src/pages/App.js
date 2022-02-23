@@ -55,6 +55,7 @@ function App() {
           setLearnModalChoice={setLearnModalChoice}
           referrerId={referrerId}
           setClientSecret={setClientSecret}
+          setPaymentsModalVisible={setPaymentsModalVisible}
         />
       </div>
     </Elements>
