@@ -15,7 +15,7 @@ function EmailModal(props) {
   async function continueToPayments () {
     const secret = await createPaymentIntent(choice);
     props.setClientSecret(secret);
-    props.setLearnModalVisible(false);
+    props.setEmailModalVisible(false);
     props.setPaymentsModalVisible(true);
   }
 
