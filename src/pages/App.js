@@ -57,11 +57,13 @@ function App() {
         setClientSecret={setClientSecret}
         setPaymentsModalVisible={setPaymentsModalVisible}
       />
-      <Elements stripe={stripePromise} options={options} >
-        <PaymentsModal
-          paymentsModalVisible={paymentsModalVisible}
-        />
-      </Elements>
+      {clientSecret && (
+        <Elements stripe={stripePromise} options={options} >
+          <PaymentsModal
+            paymentsModalVisible={paymentsModalVisible}
+          />
+        </Elements>
+      )}
     </div>
   );
 }
