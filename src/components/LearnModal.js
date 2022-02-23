@@ -30,6 +30,8 @@ function LearnModal(props) {
   async function continueToPayments () {
     const secret = await createPaymentIntent(choice);
     props.setClientSecret(secret);
+    props.setLearnModalVisible(false);
+    props.setPaymentsModalVisible(true);
   }
 
   return (
