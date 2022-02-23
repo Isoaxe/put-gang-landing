@@ -61,6 +61,8 @@ function App() {
         learnModalChoice={learnModalChoice}
         emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
+        setPaymentsModalVisible={setPaymentsModalVisible}
+        setClientSecret={setClientSecret}
       />
       {clientSecret && (
         <Elements stripe={stripePromise} options={options} >
