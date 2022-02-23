@@ -14,6 +14,7 @@ const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
 function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
+  const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
   const [learnModalChoice, setLearnModalChoice] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
