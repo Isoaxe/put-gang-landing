@@ -33,36 +33,36 @@ function App() {
   }, [membLvl, refId]);
 
   return (
-      <div className="wrapper">
-        <div className="inner">
-          <Nav />
-        </div>
-        <Hero
-          setLearnModalVisible={setLearnModalVisible}
-          setLearnModalChoice={setLearnModalChoice}
-        />
-        <div className="inner">
-          <Membership
-            setLearnModalVisible={setLearnModalVisible}
-            setLearnModalChoice={setLearnModalChoice}
-          />
-          <EmailSignup />
-        </div>
-        <LearnModal
-          learnModalVisible={learnModalVisible}
-          setLearnModalVisible={setLearnModalVisible}
-          learnModalChoice={learnModalChoice}
-          setLearnModalChoice={setLearnModalChoice}
-          referrerId={referrerId}
-          setClientSecret={setClientSecret}
-          setPaymentsModalVisible={setPaymentsModalVisible}
-        />
-        <Elements stripe={stripePromise} options={options} >
-          <PaymentsModal
-            paymentsModalVisible={paymentsModalVisible}
-          />
-        </Elements>
+    <div className="wrapper">
+      <div className="inner">
+        <Nav />
       </div>
+      <Hero
+        setLearnModalVisible={setLearnModalVisible}
+        setLearnModalChoice={setLearnModalChoice}
+      />
+      <div className="inner">
+        <Membership
+          setLearnModalVisible={setLearnModalVisible}
+          setLearnModalChoice={setLearnModalChoice}
+        />
+        <EmailSignup />
+      </div>
+      <LearnModal
+        learnModalVisible={learnModalVisible}
+        setLearnModalVisible={setLearnModalVisible}
+        learnModalChoice={learnModalChoice}
+        setLearnModalChoice={setLearnModalChoice}
+        referrerId={referrerId}
+        setClientSecret={setClientSecret}
+        setPaymentsModalVisible={setPaymentsModalVisible}
+      />
+      <Elements stripe={stripePromise} options={options} >
+        <PaymentsModal
+          paymentsModalVisible={paymentsModalVisible}
+        />
+      </Elements>
+    </div>
   );
 }
 
