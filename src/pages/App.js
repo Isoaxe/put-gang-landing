@@ -6,6 +6,7 @@ import Hero from './../components/Hero';
 import Membership from './../components/Membership';
 import EmailSignup from './../components/EmailSignup';
 import LearnModal from './../components/LearnModal';
+import PaymentsModal from './../components/PaymentsModal';
 import { STRIPE_PUBLIC_KEY_TEST } from './../util/constants';
 import './css/App.css';
 
@@ -56,6 +57,9 @@ function App() {
           referrerId={referrerId}
           setClientSecret={setClientSecret}
           setPaymentsModalVisible={setPaymentsModalVisible}
+        />
+        <PaymentsModal
+          paymentsModalVisible={paymentsModalVisible}
         />
       </div>
     </Elements>
