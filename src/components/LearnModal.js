@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import { PaymentElement } from '@stripe/react-stripe-js';
+import { createPaymentIntent } from './../util/stripe';
 import { CONSOLE_URL } from './../util/urls';
 import './css/LearnModal.css';
 
