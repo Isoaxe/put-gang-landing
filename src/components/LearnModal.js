@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { PaymentElement } from '@stripe/react-stripe-js';
 import { CONSOLE_URL } from './../util/urls';
 import './css/LearnModal.css';
 
@@ -25,8 +26,9 @@ function LearnModal(props) {
     props.setLearnModalVisible(false);
   }
 
-  function continueToPayments () {
-
+  async function continueToPayments () {
+    const secret = await createPaymentIntent(choice);
+    props.setClientSecret(secret);
   }
 
   return (
