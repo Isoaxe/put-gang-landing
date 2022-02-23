@@ -16,10 +16,14 @@ function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
   const [learnModalChoice, setLearnModalChoice] = useState("");
   const [referrerId, setReferrerId] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
 
   const currentUrl = new URL(window.location.href);
   const membLvl = currentUrl.searchParams.get("membLvl"); // Membership level.
   const refId = currentUrl.searchParams.get("refId"); // Referrer ID.
+
+  // Passing the client secret obtained from the server.
+  const options = { clientSecret };
 
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
@@ -27,7 +31,7 @@ function App() {
   }, [membLvl, refId]);
 
   return (
-    <Elements stripe={stripePromise} >
+    <Elements stripe={stripePromise} options={options} >
       <div className="wrapper">
         <div className="inner">
           <Nav />
