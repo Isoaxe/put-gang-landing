@@ -54,7 +54,6 @@ function App() {
         setLearnModalVisible={setLearnModalVisible}
         learnModalChoice={learnModalChoice}
         setLearnModalChoice={setLearnModalChoice}
-        referrerId={referrerId}
         setEmailModalVisible={setEmailModalVisible}
       />
       {clientSecret && (
