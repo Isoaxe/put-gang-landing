@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-import { createPaymentIntent } from './../util/stripe';
 import './css/LearnModal.css';
 import './css/shared.css';
 
