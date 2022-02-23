@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { PaymentElement } from '@stripe/react-stripe-js';
 import './css/PaymentsModal.css';
+import './css/shared.css';
 
 
 function PaymentsModal(props) {
