@@ -6,6 +6,7 @@ import Hero from './../components/Hero';
 import Membership from './../components/Membership';
 import EmailSignup from './../components/EmailSignup';
 import LearnModal from './../components/LearnModal';
+import EmailModal from './../components/EmailModal';
 import PaymentsModal from './../components/PaymentsModal';
 import { STRIPE_PUBLIC_KEY_TEST } from './../util/constants';
 import './css/App.css';
@@ -54,6 +55,10 @@ function App() {
         setLearnModalVisible={setLearnModalVisible}
         learnModalChoice={learnModalChoice}
         setLearnModalChoice={setLearnModalChoice}
+        setEmailModalVisible={setEmailModalVisible}
+      />
+      <EmailModal
+        emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
       />
       {clientSecret && (
