@@ -33,7 +33,6 @@ function App() {
   }, [membLvl, refId]);
 
   return (
-    <Elements stripe={stripePromise} options={options} >
       <div className="wrapper">
         <div className="inner">
           <Nav />
@@ -58,11 +57,12 @@ function App() {
           setClientSecret={setClientSecret}
           setPaymentsModalVisible={setPaymentsModalVisible}
         />
-        <PaymentsModal
-          paymentsModalVisible={paymentsModalVisible}
-        />
+        <Elements stripe={stripePromise} options={options} >
+          <PaymentsModal
+            paymentsModalVisible={paymentsModalVisible}
+          />
+        </Elements>
       </div>
-    </Elements>
   );
 }
 
