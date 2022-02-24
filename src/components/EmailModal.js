@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { Input } from '@mui/material';
+import { TextField } from '@mui/material';
 import { createPaymentIntent } from './../util/stripe';
 import './css/EmailModal.css';
 import './css/shared.css';
@@ -30,8 +30,8 @@ function EmailModal(props) {
 			overlayClassName="overlay"
 		>
       <div>
-        <Input
-          name="email"
+        <TextField
+          label="email"
           onChange={(event) => props.setEmail(event.target.value)}
         />
         <div className="modal-button-container">
