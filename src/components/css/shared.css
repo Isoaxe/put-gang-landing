@@ -21,19 +21,18 @@
   width: 90%;
   max-width: 500px;
   max-height: 95vh;
-  min-height: 480px;
   border-radius: 8px;
 }
 
 .modal-button-container {
   display: flex;
   justify-content: center;
-  margin: 30px auto 0px;
+  margin: 30px auto 30px;
   transition: margin 0.4s;
 }
 
 .modal-button-container:hover {
-  margin: 24px auto 6px;
+  margin: 24px auto 36px;
 }
 
 .modal-button-container button {
