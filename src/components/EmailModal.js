@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { Input } from '@mui/material';
 import { createPaymentIntent } from './../util/stripe';
 import './css/EmailModal.css';
 import './css/shared.css';
@@ -29,6 +30,7 @@ function EmailModal(props) {
 			overlayClassName="overlay"
 		>
       <div>
+        <Input name="email" />
         <div className="modal-button-container">
           <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
         </div>
