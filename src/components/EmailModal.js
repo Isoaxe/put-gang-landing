@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { TextField } from '@mui/material';
-import { createPaymentIntent } from './../util/stripe';
+import { createCustomer, createPaymentIntent } from './../util/stripe';
 import './css/EmailModal.css';
 import './css/shared.css';
 
@@ -15,6 +15,7 @@ function EmailModal(props) {
   }
 
   async function continueToPayments () {
+    const { stripeUid } = await createCustomer(props.email);
     const secret = await createPaymentIntent(choice);
     props.setClientSecret(secret);
     props.setEmailModalVisible(false);
