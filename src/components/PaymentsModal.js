@@ -22,7 +22,9 @@ function PaymentsModal(props) {
 		>
       <form>
         <PaymentElement />
-        <button>Submit</button>
+        <div className="modal-button-container">
+          <button>Submit</button>
+        </div>
       </form>
     </Modal>
   );
