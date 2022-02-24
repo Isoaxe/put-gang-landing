@@ -1,11 +1,13 @@
 import Modal from "react-modal";
-import { PaymentElement } from '@stripe/react-stripe-js';
+import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './css/PaymentsModal.css';
 import './css/shared.css';
 
 
 function PaymentsModal(props) {
   Modal.setAppElement("#root");
+  const stripe = useStripe();
+  const elements = useElements();
 
   function close() {
     // Don't want the modal to accidentally close, so disable.
