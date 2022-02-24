@@ -49,7 +49,7 @@ function PaymentsModal(props) {
         <h3>Enter card details:</h3>
         <PaymentElement />
         <div className="modal-button-container">
-          <button id="submit">Submit</button>
+          <button id="submit" disabled={isLoading || !stripe || !elements}>Submit</button>
         </div>
       </form>
     </Modal>
