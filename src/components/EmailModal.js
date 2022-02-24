@@ -30,7 +30,10 @@ function EmailModal(props) {
 			overlayClassName="overlay"
 		>
       <div>
-        <Input name="email" />
+        <Input
+          name="email"
+          onChange={(event) => props.setEmail(event.target.value)}
+        />
         <div className="modal-button-container">
           <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
         </div>
