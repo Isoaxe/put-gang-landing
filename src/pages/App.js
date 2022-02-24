@@ -75,6 +75,8 @@ function App() {
         <Elements stripe={stripePromise} options={options} >
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
+            learnModalChoice={learnModalChoice}
+            referrerId={referrerId}
           />
         </Elements>
       )}
