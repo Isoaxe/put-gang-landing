@@ -15,3 +15,16 @@ export async function createPaymentIntent (membLvl) {
   const jsonResponse = await response.json();
   return jsonResponse.clientSecret;
 }
+
+
+// Create a new customer in Stripe. Required for subscription payments.
+export async function createCustomer (email) {
+  const fetchConfig = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  };
+  const response = await fetch(`${API_URL}/stripe/customer`, fetchConfig);
+  const stripeUid = await response.json();
+  return stripeUid;
+}
