@@ -32,6 +32,7 @@ function EmailModal(props) {
       <div>
         <TextField
           label="email"
+          sx={{ width: '70%' }}
           onChange={(event) => props.setEmail(event.target.value)}
         />
         <div className="modal-button-container">
