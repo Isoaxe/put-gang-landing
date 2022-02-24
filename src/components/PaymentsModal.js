@@ -21,6 +21,7 @@ function PaymentsModal(props) {
 			overlayClassName="overlay"
 		>
       <form>
+        <h3>Enter card details:</h3>
         <PaymentElement />
         <div className="modal-button-container">
           <button>Submit</button>
