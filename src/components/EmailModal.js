@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { TextField } from '@mui/material';
 import { createCustomer, createPaymentIntent } from './../util/stripe';
+import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from './../util/constants';
 import './css/EmailModal.css';
 import './css/shared.css';
 
@@ -8,6 +9,9 @@ import './css/shared.css';
 function EmailModal(props) {
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
+  let priceId;
+  if (choice === "watch") priceId = STRIPE_WATCH_ID;
+  if (choice === "join") priceId = STRIPE_JOIN_ID;
 
   function close() {
     // Don't want the modal to accidentally close, so disable.
