@@ -28,7 +28,11 @@ function App() {
   const refId = currentUrl.searchParams.get("refId"); // Referrer ID.
 
   // Passing the client secret obtained from the server.
-  const options = { clientSecret };
+  const appearance = {
+    theme: 'stripe',
+    labels: 'floating'
+  }
+  const options = { clientSecret, appearance };
 
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
