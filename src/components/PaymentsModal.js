@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { CircularProgress } from '@mui/material';
 import { CONSOLE_URL } from './../util/urls';
 import './css/PaymentsModal.css';
 import './css/shared.css';
@@ -48,9 +49,11 @@ function PaymentsModal(props) {
       <form onSubmit={handleSubmit}>
         <h3>Enter card details:</h3>
         <PaymentElement />
+        {isLoading ?
+        <CircularProgress /> :
         <div className="modal-button-container">
           <button id="submit" disabled={isLoading || !stripe || !elements}>Submit</button>
-        </div>
+        </div>}
       </form>
     </Modal>
   );
