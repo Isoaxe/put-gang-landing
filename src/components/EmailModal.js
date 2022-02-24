@@ -30,6 +30,7 @@ function EmailModal(props) {
 			overlayClassName="overlay"
 		>
       <div>
+        <h3>Enter your email:</h3>
         <TextField
           label="email"
           sx={{ width: '70%' }}
