@@ -21,6 +21,7 @@ function App() {
   const [learnModalChoice, setLearnModalChoice] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [email, setEmail] = useState("");
 
   const currentUrl = new URL(window.location.href);
   const membLvl = currentUrl.searchParams.get("membLvl"); // Membership level.
@@ -63,6 +64,8 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
         setClientSecret={setClientSecret}
+        email={email}
+        setEmail={setEmail}
       />
       {clientSecret && (
         <Elements stripe={stripePromise} options={options} >
