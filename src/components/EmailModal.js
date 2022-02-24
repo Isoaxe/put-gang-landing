@@ -30,7 +30,7 @@ function EmailModal(props) {
 		>
       <div>
         <div className="modal-button-container">
-          <button onClick={continueToPayments}>Continue</button>
+          <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
         </div>
       </div>
     </Modal>
