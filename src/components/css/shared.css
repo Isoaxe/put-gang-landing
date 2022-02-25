@@ -12,6 +12,7 @@
   position: fixed;
   top: 30%;
   left: 50%;
+  padding-bottom: 25px;
   margin-right: -50%;
   transform: translate(-50%, -30%);
   font-family: 'Montserrat-Medium';
@@ -27,12 +28,12 @@
 .modal-button-container {
   display: flex;
   justify-content: center;
-  margin: 30px auto 30px;
+  margin: 30px auto 0px;
   transition: margin 0.4s;
 }
 
 .modal-button-container:hover {
-  margin: 24px auto 36px;
+  margin: 24px auto 6px;
 }
 
 .modal-button-container button {
