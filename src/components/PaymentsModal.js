@@ -49,7 +49,7 @@ function PaymentsModal(props) {
 			className="content"
 			overlayClassName="overlay"
 		>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="payment-form">
         <h3>Enter card details:</h3>
         <PaymentElement />
         {isLoading ?
