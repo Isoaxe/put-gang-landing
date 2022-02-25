@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Snackbar } from '@mui/material';
 import { CONSOLE_URL } from './../util/urls';
 import './css/PaymentsModal.css';
 import './css/shared.css';
@@ -10,6 +10,9 @@ import './css/shared.css';
 function PaymentsModal(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const vertical = 'top';
+  const horizontal = 'center';
+
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
   const stripe = useStripe();
@@ -55,6 +58,13 @@ function PaymentsModal(props) {
           <button id="submit" disabled={isLoading || !stripe || !elements}>Submit</button>
         </div>}
       </form>
+      <Snackbar
+        open={!!message}
+        onClose={() => setMessage("")}
+        autoHideDuration={6000}
+        message={message}
+        anchorOrigin={{ vertical, horizontal }}
+      />
     </Modal>
   );
 }
