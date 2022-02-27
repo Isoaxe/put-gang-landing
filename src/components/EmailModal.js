@@ -18,8 +18,7 @@ function EmailModal(props) {
   if (choice === "join") priceId = STRIPE_JOIN_ID;
 
   function close() {
-    // Don't want the modal to accidentally close, so disable.
-    return;
+    props.setEmailModalVisible(false);
   }
 
   async function continueToPayments () {
