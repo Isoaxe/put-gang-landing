@@ -59,6 +59,16 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.modal-button-container button:disabled {
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
 .spinner {
   width: 100%;
   margin-top: 20px;
