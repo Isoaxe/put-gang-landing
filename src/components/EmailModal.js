@@ -1,5 +1,6 @@
+import { useState } from "react";
 import Modal from "react-modal";
-import { TextField } from '@mui/material';
+import { TextField, CircularProgress } from '@mui/material';
 import { createCustomer, createSubscription } from './../util/stripe';
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from './../util/constants';
 import './css/EmailModal.css';
@@ -7,6 +8,8 @@ import './css/shared.css';
 
 
 function EmailModal(props) {
+  const [isLoading, setIsLoading] = useState(false);
+
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
   let priceId;
@@ -19,9 +22,11 @@ function EmailModal(props) {
   }
 
   async function continueToPayments () {
+    setIsLoading(true);
     const { stripeUid } = await createCustomer(props.email);
     const { subscriptionId, clientSecret } = await createSubscription(priceId, stripeUid);
     props.setClientSecret(clientSecret);
+    setIsLoading(false);
     props.setEmailModalVisible(false);
     props.setPaymentsModalVisible(true);
   }
@@ -41,9 +46,13 @@ function EmailModal(props) {
           sx={{ width: '70%' }}
           onChange={(event) => props.setEmail(event.target.value)}
         />
+        {isLoading ?
+        <div className="spinner">
+          <CircularProgress />
+        </div> :
         <div className="modal-button-container">
           <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
-        </div>
+        </div>}
       </div>
     </Modal>
   );
