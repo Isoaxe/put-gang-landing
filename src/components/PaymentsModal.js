@@ -55,7 +55,7 @@ function PaymentsModal(props) {
         {isLoading ?
         <CircularProgress /> :
         <div className="modal-button-container">
-          <button id="submit" disabled={isLoading || !stripe || !elements}>Submit</button>
+          <button id="submit" disabled={isLoading || !stripe || !elements}>Pay Now</button>
         </div>}
       </form>
       <Snackbar
