@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from '@mui/material';
 import { createCustomer, createSubscription } from './../util/stripe';
+import { disableButtonContainer } from './../util/helpers';
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from './../util/constants';
 import './css/EmailModal.css';
 import './css/shared.css';
@@ -31,6 +32,10 @@ function EmailModal(props) {
     props.setPaymentsModalVisible(true);
   }
 
+  useEffect(() => {
+    disableButtonContainer();
+  });
+
   return (
     <Modal
 			isOpen={props.emailModalVisible}
@@ -50,7 +55,7 @@ function EmailModal(props) {
         <div className="spinner">
           <CircularProgress />
         </div> :
-        <div className="modal-button-container">
+        <div className="modal-button-container disabled">
           <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
         </div>}
       </div>
