@@ -53,7 +53,9 @@ function PaymentsModal(props) {
         <h3>Enter card details:</h3>
         <PaymentElement />
         {isLoading ?
-        <CircularProgress /> :
+        <div className="spinner">
+          <CircularProgress />
+        </div> :
         <div className="modal-button-container">
           <button id="submit" disabled={isLoading || !stripe || !elements}>Pay Now</button>
         </div>}
