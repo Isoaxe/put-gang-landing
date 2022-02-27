@@ -10,6 +10,7 @@ import './css/shared.css';
 
 function EmailModal(props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [emailOk, setEmailOk] = useState(false);
 
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
@@ -19,6 +20,14 @@ function EmailModal(props) {
 
   function close() {
     props.setEmailModalVisible(false);
+  }
+
+  function checkEmail () {
+    if (props.email?.indexOf("@") !== -1) {
+      setEmailOk(true);
+    } else {
+      setEmailOk(false);
+    }
   }
 
   async function continueToPayments () {
@@ -33,6 +42,7 @@ function EmailModal(props) {
 
   useEffect(() => {
     disableButtonContainer();
+    checkEmail();
   });
 
   return (
@@ -55,7 +65,7 @@ function EmailModal(props) {
           <CircularProgress />
         </div> :
         <div className="modal-button-container disabled">
-          <button onClick={continueToPayments} disabled={!props.email}>Continue</button>
+          <button onClick={continueToPayments} disabled={!emailOk}>Continue</button>
         </div>}
       </div>
     </Modal>
