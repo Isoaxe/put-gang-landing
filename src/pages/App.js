@@ -77,6 +77,7 @@ function App() {
             paymentsModalVisible={paymentsModalVisible}
             learnModalChoice={learnModalChoice}
             referrerId={referrerId}
+            email={email}
           />
         </Elements>
       )}
