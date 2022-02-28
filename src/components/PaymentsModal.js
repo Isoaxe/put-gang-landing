@@ -30,7 +30,7 @@ function PaymentsModal(props) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${CONSOLE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`,
+        return_url: `${CONSOLE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}&email=${props.email}`,
       },
     });
     if (error.type === "card_error" || error.type === "validation_error") {
