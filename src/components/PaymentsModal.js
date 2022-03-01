@@ -15,6 +15,7 @@ function PaymentsModal(props) {
 
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
+  const refId = props.referrerId || "none";
   const stripe = useStripe();
   const elements = useElements();
 
@@ -30,7 +31,7 @@ function PaymentsModal(props) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${CONSOLE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}&email=${props.email}`,
+        return_url: `${CONSOLE_URL}/session/signup?refId=${refId}&membLvl=${choice}&email=${props.email}`,
       },
     });
     if (error.type === "card_error" || error.type === "validation_error") {
