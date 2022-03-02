@@ -79,6 +79,7 @@ function App() {
             paymentsModalVisible={paymentsModalVisible}
             learnModalChoice={learnModalChoice}
             referrerId={referrerId}
+            stripeUid={stripeUid}
             email={email}
           />
         </Elements>
