@@ -21,6 +21,7 @@ function App() {
   const [learnModalChoice, setLearnModalChoice] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [stripeUid, setStripeUid] = useState("");
   const [email, setEmail] = useState("");
 
   const currentUrl = new URL(window.location.href);
@@ -68,6 +69,7 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
         setClientSecret={setClientSecret}
+        setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
       />
