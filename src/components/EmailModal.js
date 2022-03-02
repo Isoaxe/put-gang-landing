@@ -35,6 +35,7 @@ function EmailModal(props) {
     const { stripeUid } = await createCustomer(props.email);
     const { subscriptionId, clientSecret } = await createSubscription(priceId, stripeUid);
     props.setClientSecret(clientSecret);
+    props.setStripeUid(stripeUid);
     setIsLoading(false);
     props.setEmailModalVisible(false);
     props.setPaymentsModalVisible(true);
