@@ -1,6 +1,6 @@
 import Modal from "react-modal";
-import { CONSOLE_BASE_URL } from './../util/urls';
 import './css/LearnModal.css';
+import './css/shared.css';
 
 
 function LearnModal(props) {
@@ -23,6 +23,11 @@ function LearnModal(props) {
 
   function close() {
     props.setLearnModalVisible(false);
+  }
+
+  function continueToEmail () {
+    props.setLearnModalVisible(false);
+    props.setEmailModalVisible(true);
   }
 
   return (
@@ -56,7 +61,7 @@ function LearnModal(props) {
           </div>
         </div>
         <div className="modal-button-container">
-          <a href={`${CONSOLE_BASE_URL}/session/signup?refId=${props.referrerId}&membLvl=${choice}`}>Continue</a>
+          <button onClick={continueToEmail}>Continue</button>
         </div>
       </div>
     </Modal>
