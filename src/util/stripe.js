@@ -3,9 +3,8 @@
  */
 import { API_URL } from "./urls";
 
-
 // Create a new customer in Stripe. Required for subscription payments.
-export async function createCustomer (email) {
+export async function createCustomer(email) {
   const fetchConfig = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -16,9 +15,8 @@ export async function createCustomer (email) {
   return stripeUid;
 }
 
-
 // Create a subscription in Stripe.
-export async function createSubscription (priceId, customerId) {
+export async function createSubscription(priceId, customerId) {
   const fetchConfig = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

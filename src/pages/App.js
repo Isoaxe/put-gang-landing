@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import Nav from './../components/Nav';
-import Hero from './../components/Hero';
-import Membership from './../components/Membership';
-import EmailSignup from './../components/EmailSignup';
-import LearnModal from './../components/LearnModal';
-import EmailModal from './../components/EmailModal';
-import PaymentsModal from './../components/PaymentsModal';
-import { STRIPE_PUBLIC_KEY_TEST } from './../util/constants';
-import './css/App.css';
-
+import { useState, useEffect } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import Nav from "./../components/Nav";
+import Hero from "./../components/Hero";
+import Membership from "./../components/Membership";
+import EmailSignup from "./../components/EmailSignup";
+import LearnModal from "./../components/LearnModal";
+import EmailModal from "./../components/EmailModal";
+import PaymentsModal from "./../components/PaymentsModal";
+import { STRIPE_PUBLIC_KEY_TEST } from "./../util/constants";
+import "./css/App.css";
 
 const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
@@ -30,9 +29,9 @@ function App() {
 
   // Passing the client secret obtained from the server.
   const appearance = {
-    theme: 'stripe',
-    labels: 'floating'
-  }
+    theme: "stripe",
+    labels: "floating",
+  };
   const options = { clientSecret, appearance };
 
   useEffect(() => {
@@ -74,7 +73,7 @@ function App() {
         setEmail={setEmail}
       />
       {clientSecret && (
-        <Elements stripe={stripePromise} options={options} >
+        <Elements stripe={stripePromise} options={options}>
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
             learnModalChoice={learnModalChoice}

@@ -1,6 +1,6 @@
 .modal-headlines {
-  background-color: #F7F8FC;
-  border-bottom: 1px solid #E0E7ED;
+  background-color: #f7f8fc;
+  border-bottom: 1px solid #e0e7ed;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   margin-bottom: 30px;
@@ -9,7 +9,7 @@
 .modal-heading {
   margin-top: 0px;
   padding-top: 30px;
-  color: #36434D;
+  color: #36434d;
   margin-bottom: 5px;
 }
 
@@ -19,11 +19,11 @@
 
 .modal-heading-price {
   margin-bottom: 30px;
-  color: #AE8DF4;
+  color: #ae8df4;
 }
 
 .modal-options-container {
-  font-family: 'Montserrat-SemiBold';
+  font-family: "Montserrat-SemiBold";
   text-align: left;
 }
 
@@ -32,14 +32,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #E0E7ED;
+  border-bottom: 1px solid #e0e7ed;
   padding: 0px 30px 0px;
 }
 
 .modal-option-name {
-  color: #36434D;
+  color: #36434d;
 }
 
 .modal-option-price {
-  color: #AE8DF4;
+  color: #ae8df4;
 }

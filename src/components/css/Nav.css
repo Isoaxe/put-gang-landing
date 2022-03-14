@@ -14,13 +14,13 @@
 .nav a {
   width: 67px;
   height: 26px;
-  color: #FFFFFF;
-  background-color: #8667E7;
+  color: #ffffff;
+  background-color: #8667e7;
   text-decoration: none;
   padding-top: 10px;
   border-radius: 5px;
   font-size: 12px;
-  font-family: 'Montserrat-SemiBold', Arial, sans-serif;
+  font-family: "Montserrat-SemiBold", Arial, sans-serif;
   transition: margin-bottom 0.4s, box-shadow 0.4s;
 }
 

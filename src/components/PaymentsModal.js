@@ -1,17 +1,20 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { CircularProgress, Snackbar } from '@mui/material';
-import { CONSOLE_URL } from './../util/urls';
-import './css/PaymentsModal.css';
-import './css/shared.css';
-
+import {
+  PaymentElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import { CircularProgress, Snackbar } from "@mui/material";
+import { CONSOLE_URL } from "./../util/urls";
+import "./css/PaymentsModal.css";
+import "./css/shared.css";
 
 function PaymentsModal(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const vertical = 'top';
-  const horizontal = 'center';
+  const vertical = "top";
+  const horizontal = "center";
 
   Modal.setAppElement("#root");
   const choice = props.learnModalChoice;
@@ -25,7 +28,7 @@ function PaymentsModal(props) {
     return;
   }
 
-  async function handleSubmit (event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (!stripe || !elements) return;
     setIsLoading(true);
@@ -45,22 +48,26 @@ function PaymentsModal(props) {
 
   return (
     <Modal
-			isOpen={props.paymentsModalVisible}
-			onRequestClose={close}
-			contentLabel="Stripe Payments Modal"
-			className="content"
-			overlayClassName="overlay"
-		>
+      isOpen={props.paymentsModalVisible}
+      onRequestClose={close}
+      contentLabel="Stripe Payments Modal"
+      className="content"
+      overlayClassName="overlay"
+    >
       <form onSubmit={handleSubmit} className="payment-form">
         <h3>Enter card details:</h3>
         <PaymentElement />
-        {isLoading ?
-        <div className="spinner">
-          <CircularProgress />
-        </div> :
-        <div className="modal-button-container">
-          <button id="submit" disabled={isLoading || !stripe || !elements}>Pay Now</button>
-        </div>}
+        {isLoading ? (
+          <div className="spinner">
+            <CircularProgress />
+          </div>
+        ) : (
+          <div className="modal-button-container">
+            <button id="submit" disabled={isLoading || !stripe || !elements}>
+              Pay Now
+            </button>
+          </div>
+        )}
       </form>
       <Snackbar
         open={!!message}
