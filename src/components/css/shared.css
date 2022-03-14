@@ -15,9 +15,9 @@
   padding-bottom: 25px;
   margin-right: -50%;
   transform: translate(-50%, -30%);
-  font-family: 'Montserrat-Medium';
-  background-color: #FFFFFF;
-  color: #5E6971;
+  font-family: "Montserrat-Medium";
+  background-color: #ffffff;
+  color: #5e6971;
   text-align: center;
   width: 90%;
   max-width: 500px;
@@ -43,19 +43,19 @@
   align-items: center;
   width: 85%;
   height: 52px;
-  color: #FFFFFF;
-  background-color: #AE8DF4;
+  color: #ffffff;
+  background-color: #ae8df4;
   border: 0;
   border-radius: 5px;
   font-size: 16px;
   padding-bottom: 3px;
-  font-family: 'Montserrat-SemiBold', Arial, sans-serif;
+  font-family: "Montserrat-SemiBold", Arial, sans-serif;
   transition: box-shadow 0.4s;
 }
 
 .modal-button-container button:hover {
   cursor: pointer;
-  background-color: #8E63EB;
+  background-color: #8e63eb;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

@@ -1,7 +1,6 @@
-import logo from './../assets/logo.png';
-import { CONSOLE_URL } from './../util/urls';
-import './css/Nav.css';
-
+import logo from "./../assets/logo.png";
+import { CONSOLE_URL } from "./../util/urls";
+import "./css/Nav.css";
 
 function Nav() {
   return (
