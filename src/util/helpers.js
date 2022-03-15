@@ -6,7 +6,7 @@ import { API_URL } from "./urls";
 // Request a link token for Plaid access from the server.
 export async function getLinkToken() {
   const fetchConfig = {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
