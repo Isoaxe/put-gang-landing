@@ -9,6 +9,7 @@ import LearnModal from "./../components/LearnModal";
 import EmailModal from "./../components/EmailModal";
 import PaymentsModal from "./../components/PaymentsModal";
 import { STRIPE_PUBLIC_KEY_TEST } from "./../util/constants";
+import { API_URL } from "./../util/urls";
 import "./css/App.css";
 
 const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
@@ -21,6 +22,7 @@ function App() {
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
+  const [linkToken, setLinkToken] = useState("");
   const [email, setEmail] = useState("");
 
   const currentUrl = new URL(window.location.href);
@@ -33,6 +35,20 @@ function App() {
     labels: "floating",
   };
   const options = { clientSecret, appearance };
+
+  // Request a link token for Plaid access from the server.
+  async function getLinkToken() {
+    const fetchConfig = {
+      method: "POST",
+    };
+    const response = await fetch(
+      API_URL + "/plaid/create-link-token",
+      fetchConfig
+    );
+    const jsonResponse = await response.json();
+    const { link_token } = jsonResponse;
+    setLinkToken(link_token);
+  }
 
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
