@@ -55,6 +55,10 @@ function App() {
     if (refId) setReferrerId(refId);
   }, [membLvl, refId]);
 
+  useEffect(() => {
+    getLinkToken();
+  }, []);
+
   return (
     <div className="wrapper">
       <div className="inner">
