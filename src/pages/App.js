@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Nav from "./../components/Nav";
@@ -49,6 +49,28 @@ function App() {
     const { link_token } = jsonResponse;
     setLinkToken(link_token);
   }
+
+  const onSuccess = useCallback((publicToken, metadata) => {
+    // send public_token to your server
+    // https://plaid.com/docs/api/tokens/#token-exchange-flow
+    console.log(publicToken, metadata);
+
+    // Exchange a public token for an access one.
+    async function exchangeTokens() {
+      const fetchConfig = {
+        method: "POST",
+        body: JSON.stringify(publicToken),
+      };
+      const response = await fetch(
+        API_URL + "/plaid/exchange-tokens",
+        fetchConfig
+      );
+      const jsonResponse = await response.json();
+      console.log("Exchange token response:", jsonResponse);
+    }
+
+    exchangeTokens();
+  }, []);
 
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
