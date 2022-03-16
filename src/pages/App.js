@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { usePlaidLink } from "react-plaid-link";
 import Nav from "./../components/Nav";
 import Hero from "./../components/Hero";
 import Membership from "./../components/Membership";
@@ -9,8 +8,8 @@ import EmailSignup from "./../components/EmailSignup";
 import LearnModal from "./../components/LearnModal";
 import EmailModal from "./../components/EmailModal";
 import PaymentsModal from "./../components/PaymentsModal";
+import PlaidLink from "./../components/PlaidLink";
 import { STRIPE_PUBLIC_KEY_TEST } from "./../util/constants";
-import { API_URL } from "./../util/urls";
 import "./css/App.css";
 
 const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
@@ -23,7 +22,6 @@ function App() {
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
-  const [linkToken, setLinkToken] = useState("");
   const [email, setEmail] = useState("");
 
   const currentUrl = new URL(window.location.href);
@@ -37,55 +35,10 @@ function App() {
   };
   const options = { clientSecret, appearance };
 
-  // Request a link token for Plaid access from the server.
-  async function getLinkToken() {
-    const fetchConfig = {
-      method: "POST",
-    };
-    const response = await fetch(
-      API_URL + "/plaid/create-link-token",
-      fetchConfig
-    );
-    const jsonResponse = await response.json();
-    const { link_token } = jsonResponse;
-    setLinkToken(link_token);
-  }
-
-  const onSuccess = useCallback((publicToken, metadata) => {
-    // send public_token to your server
-    // https://plaid.com/docs/api/tokens/#token-exchange-flow
-    console.log(publicToken, metadata);
-
-    // Exchange a public token for an access one.
-    async function exchangeTokens() {
-      const fetchConfig = {
-        method: "POST",
-        body: JSON.stringify(publicToken),
-      };
-      const response = await fetch(
-        API_URL + "/plaid/exchange-tokens",
-        fetchConfig
-      );
-      const jsonResponse = await response.json();
-      console.log("Exchange token response:", jsonResponse);
-    }
-
-    exchangeTokens();
-  }, []);
-
-  const { open, ready } = usePlaidLink({
-    linkToken,
-    onSuccess,
-  });
-
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
     if (refId) setReferrerId(refId);
   }, [membLvl, refId]);
-
-  useEffect(() => {
-    getLinkToken();
-  }, []);
 
   return (
     <div className="wrapper">
@@ -101,9 +54,7 @@ function App() {
           setLearnModalVisible={setLearnModalVisible}
           setLearnModalChoice={setLearnModalChoice}
         />
-        <button onClick={() => open()} disabled={!ready}>
-          Connect a bank account
-        </button>
+        <PlaidLink />
         <EmailSignup />
       </div>
       <LearnModal
