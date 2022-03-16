@@ -19,11 +19,6 @@ const PlaidLink = () => {
   }
 
   const onSuccess = useCallback((publicToken, metadata) => {
-    // send public_token to your server
-    // https://plaid.com/docs/api/tokens/#token-exchange-flow
-    console.log("publicToken:", publicToken);
-    console.log("metadata:", metadata);
-
     const { account_id } = metadata;
 
     // Exchange a public token for an access one.
