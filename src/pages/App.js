@@ -101,6 +101,9 @@ function App() {
           setLearnModalVisible={setLearnModalVisible}
           setLearnModalChoice={setLearnModalChoice}
         />
+        <button onClick={() => open()} disabled={!ready}>
+          Connect a bank account
+        </button>
         <EmailSignup />
       </div>
       <LearnModal
