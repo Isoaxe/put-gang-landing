@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { usePlaidLink } from "react-plaid-link";
 import Nav from "./../components/Nav";
 import Hero from "./../components/Hero";
 import Membership from "./../components/Membership";
@@ -71,6 +72,11 @@ function App() {
 
     exchangeTokens();
   }, []);
+
+  const { open, ready } = usePlaidLink({
+    linkToken,
+    onSuccess,
+  });
 
   useEffect(() => {
     if (membLvl) setLearnModalChoice(membLvl);
