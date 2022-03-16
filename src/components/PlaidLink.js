@@ -24,12 +24,14 @@ const PlaidLink = () => {
     console.log("publicToken:", publicToken);
     console.log("metadata:", metadata);
 
+    const { account_id } = metadata;
+
     // Exchange a public token for an access one.
     async function exchangeTokens() {
       const fetchConfig = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ public_token: publicToken }),
+        body: JSON.stringify({ public_token: publicToken, account_id }),
       };
       const response = await fetch(
         API_URL + "/plaid/exchange-tokens",
