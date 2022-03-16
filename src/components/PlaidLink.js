@@ -21,13 +21,14 @@ const PlaidLink = () => {
   const onSuccess = useCallback((publicToken, metadata) => {
     // send public_token to your server
     // https://plaid.com/docs/api/tokens/#token-exchange-flow
-    console.log(publicToken, metadata);
+    console.log("publicToken:", publicToken);
+    console.log("metadata:", metadata);
 
     // Exchange a public token for an access one.
     async function exchangeTokens() {
       const fetchConfig = {
         method: "POST",
-        body: JSON.stringify(publicToken),
+        body: JSON.stringify({ public_token: publicToken }),
       };
       const response = await fetch(
         API_URL + "/plaid/exchange-tokens",
