@@ -28,6 +28,7 @@ const PlaidLink = () => {
     async function exchangeTokens() {
       const fetchConfig = {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ public_token: publicToken }),
       };
       const response = await fetch(
