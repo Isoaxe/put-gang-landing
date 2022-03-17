@@ -54,6 +54,7 @@ function App() {
         <Membership
           setChoiceModalVisible={setChoiceModalVisible}
           setMembershipLevel={setMembershipLevel}
+          setPaymentMethod={setPaymentMethod}
         />
         <PlaidLink />
         <EmailSignup />
