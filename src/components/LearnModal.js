@@ -53,7 +53,10 @@ function LearnModal(props) {
               type="radio"
               name="price-options"
               id="watch"
-              onChange={() => props.setMembershipLevel("watch")}
+              onChange={() => {
+                props.setMembershipLevel("watch");
+                props.setPaymentMethod("card");
+              }}
               checked={watchChecked}
             />
           </div>
@@ -66,7 +69,10 @@ function LearnModal(props) {
               type="radio"
               name="price-options"
               id="join"
-              onChange={() => props.setMembershipLevel("join")}
+              onChange={() => {
+                props.setMembershipLevel("join");
+                props.setPaymentMethod("card");
+              }}
               checked={joinChecked}
             />
           </div>
