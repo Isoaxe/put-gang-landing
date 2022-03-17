@@ -64,7 +64,7 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink achPayments={achPayments} />
+        <PlaidLink achPayments={achPayments} setAchPayments={setAchPayments} />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
