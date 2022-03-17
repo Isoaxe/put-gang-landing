@@ -4,19 +4,26 @@ import "./css/shared.css";
 
 function LearnModal(props) {
   Modal.setAppElement("#root");
-  const choice = props.membershipLevel;
-  let action, amount, watchChecked, joinChecked;
+  const { membershipLevel, paymentMethod } = props;
+  const choice = `${membershipLevel}-${paymentMethod}`;
+  let action, amount, checked;
 
-  if (choice === "watch") {
+  if (choice === "watch-card") {
     action = "Watch";
     amount = "50";
-    watchChecked = "checked";
-    joinChecked = "";
-  } else if (choice === "join") {
+    checked = "watch-card";
+  } else if (choice === "join-card") {
     action = "Join";
     amount = "150";
-    joinChecked = "checked";
-    watchChecked = "";
+    checked = "join-card";
+  } else if (choice === "watch-ach") {
+    action = "Watch";
+    amount = "37.50";
+    checked = "join-card";
+  } else if (choice === "join-ach") {
+    action = "Join";
+    amount = "112.50";
+    checked = "join-card";
   }
 
   function close() {
@@ -59,7 +66,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("watch");
                 props.setPaymentMethod("card");
               }}
-              checked={watchChecked}
+              checked={checked === "watch-card"}
             />
           </div>
           <div className="modal-option">
@@ -75,7 +82,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("join");
                 props.setPaymentMethod("card");
               }}
-              checked={joinChecked}
+              checked={checked === "join-card"}
             />
           </div>
         </div>
@@ -96,7 +103,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("watch");
                 props.setPaymentMethod("ach");
               }}
-              checked={watchChecked}
+              checked={checked === "watch-ach"}
             />
           </div>
           <div className="modal-option">
@@ -112,7 +119,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("join");
                 props.setPaymentMethod("ach");
               }}
-              checked={joinChecked}
+              checked={checked === "join-ach"}
             />
           </div>
         </div>
