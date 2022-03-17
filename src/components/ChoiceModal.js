@@ -47,14 +47,14 @@ function LearnModal(props) {
         </h4>
         <div className="modal-options-container">
           <div className="modal-option">
-            <label for="watch">
+            <label for="watch-card">
               <p className="modal-option-name">Watch the discussion</p>
               <p className="modal-option-price">$50 / month</p>
             </label>
             <input
               type="radio"
               name="price-options"
-              id="watch"
+              id="watch-card"
               onChange={() => {
                 props.setMembershipLevel("watch");
                 props.setPaymentMethod("card");
@@ -63,14 +63,14 @@ function LearnModal(props) {
             />
           </div>
           <div className="modal-option">
-            <label for="join">
+            <label for="join-card">
               <p className="modal-option-name">Join the discussion</p>
               <p className="modal-option-price">$150 / month</p>
             </label>
             <input
               type="radio"
               name="price-options"
-              id="join"
+              id="join-card"
               onChange={() => {
                 props.setMembershipLevel("join");
                 props.setPaymentMethod("card");
