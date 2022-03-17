@@ -77,6 +77,7 @@ function LearnModal(props) {
             />
           </div>
         </div>
+        <h4 className="modal-payment-options">Or pay by bank transfer</h4>
         <div className="modal-button-container">
           <button onClick={continueToEmail}>Continue</button>
         </div>
