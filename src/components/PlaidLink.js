@@ -4,7 +4,7 @@ import { API_URL } from "./../util/urls";
 
 function PlaidLink(props) {
   const [token, setToken] = useState("");
-  const { achPayments } = props;
+  const { achPayments, setAchPayments } = props;
 
   async function createLinkToken() {
     const fetchConfig = {
@@ -55,8 +55,9 @@ function PlaidLink(props) {
   useEffect(() => {
     if (achPayments && ready) {
       open();
+      setAchPayments(false);
     }
-  }, [achPayments, ready, open]);
+  }, [achPayments, setAchPayments, ready, open]);
 
   return <div></div>;
 }
