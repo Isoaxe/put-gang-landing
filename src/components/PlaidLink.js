@@ -2,8 +2,9 @@ import React, { useCallback, useState, useEffect } from "react";
 import { usePlaidLink } from "react-plaid-link";
 import { API_URL } from "./../util/urls";
 
-const PlaidLink = () => {
+const PlaidLink = (props) => {
   const [token, setToken] = useState("");
+  const { achPayments } = props;
 
   async function createLinkToken() {
     const fetchConfig = {
@@ -51,11 +52,13 @@ const PlaidLink = () => {
     createLinkToken();
   }, []);
 
-  return (
-    <button onClick={() => open()} disabled={!ready}>
-      Connect a bank account
-    </button>
-  );
+  useEffect(() => {
+    if (achPayments && ready) {
+      open();
+    }
+  }, [achPayments, ready, open]);
+
+  return <div></div>;
 };
 
 export default PlaidLink;
