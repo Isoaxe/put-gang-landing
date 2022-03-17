@@ -28,9 +28,13 @@
   border-bottom: 1px solid #e0e7ed;
 }
 
-.modal-payment-options span {
+.payment-text {
   font-family: "Montserrat-Semibold";
   color: #36434d;
+}
+
+.discount-text {
+  color: #ae8df4;
 }
 
 .modal-options-container {
