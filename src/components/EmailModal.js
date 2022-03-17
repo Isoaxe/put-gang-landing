@@ -11,6 +11,7 @@ import "./css/shared.css";
 function EmailModal(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
+  const [achPayments, setAchPayments] = useState(false);
 
   Modal.setAppElement("#root");
   const { membershipLevel, paymentMethod } = props;
@@ -40,11 +41,12 @@ function EmailModal(props) {
     props.setClientSecret(clientSecret);
     props.setStripeUid(stripeUid);
     setIsLoading(false);
-    props.setEmailModalVisible(false);
     if (paymentMethod === "card") {
+      props.setEmailModalVisible(false);
       props.setPaymentsModalVisible(true);
     } else if (paymentMethod === "ach") {
-      console.log("ACH payments selected");
+      setAchPayments(true);
+      props.setEmailModalVisible(false);
     }
   }
 
@@ -62,7 +64,7 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink />
+        <PlaidLink achPayments={achPayments} />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
