@@ -8,7 +8,6 @@ import EmailSignup from "./../components/EmailSignup";
 import ChoiceModal from "./../components/ChoiceModal";
 import EmailModal from "./../components/EmailModal";
 import PaymentsModal from "./../components/PaymentsModal";
-import PlaidLink from "./../components/PlaidLink";
 import { STRIPE_PUBLIC_KEY_TEST } from "./../util/constants";
 import "./css/App.css";
 
@@ -56,7 +55,6 @@ function App() {
           setMembershipLevel={setMembershipLevel}
           setPaymentMethod={setPaymentMethod}
         />
-        <PlaidLink />
         <EmailSignup />
       </div>
       <ChoiceModal
