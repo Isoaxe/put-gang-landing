@@ -69,10 +69,11 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
       />
       <EmailModal
-        membershipLevel={membershipLevel}
         emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
+        membershipLevel={membershipLevel}
+        paymentMethod={paymentMethod}
         setClientSecret={setClientSecret}
         setStripeUid={setStripeUid}
         email={email}
