@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from "@mui/material";
+import PlaidLink from "./PlaidLink";
 import { createCustomer, createSubscription } from "./../util/stripe";
 import { disableButtonContainer } from "./../util/helpers";
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from "./../util/constants";
@@ -12,7 +13,7 @@ function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
 
   Modal.setAppElement("#root");
-  const { membershipLevel } = props;
+  const { membershipLevel, paymentMethod } = props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
@@ -40,7 +41,11 @@ function EmailModal(props) {
     props.setStripeUid(stripeUid);
     setIsLoading(false);
     props.setEmailModalVisible(false);
-    props.setPaymentsModalVisible(true);
+    if (paymentMethod === "card") {
+      props.setPaymentsModalVisible(true);
+    } else if (paymentMethod === "ach") {
+      console.log("ACH payments selected");
+    }
   }
 
   useEffect(() => {
@@ -57,6 +62,7 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
+        <PlaidLink />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
