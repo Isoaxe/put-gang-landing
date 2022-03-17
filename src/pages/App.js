@@ -18,7 +18,7 @@ function App() {
   const [learnModalVisible, setLearnModalVisible] = useState(false);
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
-  const [learnModalChoice, setLearnModalChoice] = useState("");
+  const [membershipLevel, setMembershipLevel] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
@@ -36,7 +36,7 @@ function App() {
   const options = { clientSecret, appearance };
 
   useEffect(() => {
-    if (membLvl) setLearnModalChoice(membLvl);
+    if (membLvl) setMembershipLevel(membLvl);
     if (refId) setReferrerId(refId);
   }, [membLvl, refId]);
 
@@ -47,12 +47,12 @@ function App() {
       </div>
       <Hero
         setLearnModalVisible={setLearnModalVisible}
-        setLearnModalChoice={setLearnModalChoice}
+        setMembershipLevel={setMembershipLevel}
       />
       <div className="inner">
         <Membership
           setLearnModalVisible={setLearnModalVisible}
-          setLearnModalChoice={setLearnModalChoice}
+          setMembershipLevel={setMembershipLevel}
         />
         <PlaidLink />
         <EmailSignup />
@@ -60,12 +60,12 @@ function App() {
       <LearnModal
         learnModalVisible={learnModalVisible}
         setLearnModalVisible={setLearnModalVisible}
-        learnModalChoice={learnModalChoice}
-        setLearnModalChoice={setLearnModalChoice}
+        membershipLevel={membershipLevel}
+        setMembershipLevel={setMembershipLevel}
         setEmailModalVisible={setEmailModalVisible}
       />
       <EmailModal
-        learnModalChoice={learnModalChoice}
+        membershipLevel={membershipLevel}
         emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
@@ -78,7 +78,7 @@ function App() {
         <Elements stripe={stripePromise} options={options}>
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
-            learnModalChoice={learnModalChoice}
+            membershipLevel={membershipLevel}
             referrerId={referrerId}
             stripeUid={stripeUid}
             email={email}

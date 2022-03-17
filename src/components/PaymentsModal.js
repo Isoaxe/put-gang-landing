@@ -17,7 +17,7 @@ function PaymentsModal(props) {
   const horizontal = "center";
 
   Modal.setAppElement("#root");
-  const choice = props.learnModalChoice;
+  const choice = props.membershipLevel;
   const refId = props.referrerId || "none";
   const stripeUid = props.stripeUid || "none";
   const stripe = useStripe();

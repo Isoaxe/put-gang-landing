@@ -4,7 +4,7 @@ import "./css/shared.css";
 
 function LearnModal(props) {
   Modal.setAppElement("#root");
-  const choice = props.learnModalChoice;
+  const choice = props.membershipLevel;
   let action, amount, watchChecked, joinChecked;
 
   if (choice === "watch") {
@@ -53,7 +53,7 @@ function LearnModal(props) {
               type="radio"
               name="price-options"
               id="watch"
-              onChange={() => props.setLearnModalChoice("watch")}
+              onChange={() => props.setMembershipLevel("watch")}
               checked={watchChecked}
             />
           </div>
@@ -66,7 +66,7 @@ function LearnModal(props) {
               type="radio"
               name="price-options"
               id="join"
-              onChange={() => props.setLearnModalChoice("join")}
+              onChange={() => props.setMembershipLevel("join")}
               checked={joinChecked}
             />
           </div>

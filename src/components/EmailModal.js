@@ -12,7 +12,7 @@ function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
 
   Modal.setAppElement("#root");
-  const choice = props.learnModalChoice;
+  const choice = props.membershipLevel;
   let priceId;
   if (choice === "watch") priceId = STRIPE_WATCH_ID;
   if (choice === "join") priceId = STRIPE_JOIN_ID;
