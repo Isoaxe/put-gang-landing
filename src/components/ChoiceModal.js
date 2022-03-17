@@ -82,6 +82,40 @@ function LearnModal(props) {
         <h4 className="modal-payment-options">
           Or pay by <span>bank transfer</span>
         </h4>
+        <div className="modal-options-container">
+          <div className="modal-option">
+            <label for="watch-ach">
+              <p className="modal-option-name">Watch the discussion</p>
+              <p className="modal-option-price">$37.50 / month</p>
+            </label>
+            <input
+              type="radio"
+              name="price-options"
+              id="watch-ach"
+              onChange={() => {
+                props.setMembershipLevel("watch");
+                props.setPaymentMethod("ach");
+              }}
+              checked={watchChecked}
+            />
+          </div>
+          <div className="modal-option">
+            <label for="join-ach">
+              <p className="modal-option-name">Join the discussion</p>
+              <p className="modal-option-price">$112.50 / month</p>
+            </label>
+            <input
+              type="radio"
+              name="price-options"
+              id="join-ach"
+              onChange={() => {
+                props.setMembershipLevel("join");
+                props.setPaymentMethod("ach");
+              }}
+              checked={joinChecked}
+            />
+          </div>
+        </div>
         <div className="modal-button-container">
           <button onClick={continueToEmail}>Continue</button>
         </div>
