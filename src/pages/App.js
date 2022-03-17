@@ -19,6 +19,7 @@ function App() {
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
   const [membershipLevel, setMembershipLevel] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
@@ -62,6 +63,8 @@ function App() {
         setLearnModalVisible={setLearnModalVisible}
         membershipLevel={membershipLevel}
         setMembershipLevel={setMembershipLevel}
+        paymentMethod={paymentMethod}
+        setPaymentMethod={setPaymentMethod}
         setEmailModalVisible={setEmailModalVisible}
       />
       <EmailModal
