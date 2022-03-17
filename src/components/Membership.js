@@ -4,12 +4,12 @@ import "./css/Membership.css";
 
 function Membership(props) {
   function openModalWithWatch() {
-    props.setLearnModalVisible(true);
+    props.setChoiceModalVisible(true);
     props.setMembershipLevel("watch");
   }
 
   function openModalWithJoin() {
-    props.setLearnModalVisible(true);
+    props.setChoiceModalVisible(true);
     props.setMembershipLevel("join");
   }
 

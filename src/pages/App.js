@@ -15,7 +15,7 @@ import "./css/App.css";
 const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
 function App() {
-  const [learnModalVisible, setLearnModalVisible] = useState(false);
+  const [choiceModalVisible, setChoiceModalVisible] = useState(false);
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
   const [membershipLevel, setMembershipLevel] = useState("");
@@ -47,20 +47,20 @@ function App() {
         <Nav />
       </div>
       <Hero
-        setLearnModalVisible={setLearnModalVisible}
+        setChoiceModalVisible={setChoiceModalVisible}
         setMembershipLevel={setMembershipLevel}
       />
       <div className="inner">
         <Membership
-          setLearnModalVisible={setLearnModalVisible}
+          setChoiceModalVisible={setChoiceModalVisible}
           setMembershipLevel={setMembershipLevel}
         />
         <PlaidLink />
         <EmailSignup />
       </div>
       <LearnModal
-        learnModalVisible={learnModalVisible}
-        setLearnModalVisible={setLearnModalVisible}
+        choiceModalVisible={choiceModalVisible}
+        setChoiceModalVisible={setChoiceModalVisible}
         membershipLevel={membershipLevel}
         setMembershipLevel={setMembershipLevel}
         paymentMethod={paymentMethod}

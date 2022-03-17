@@ -20,17 +20,17 @@ function LearnModal(props) {
   }
 
   function close() {
-    props.setLearnModalVisible(false);
+    props.setChoiceModalVisible(false);
   }
 
   function continueToEmail() {
-    props.setLearnModalVisible(false);
+    props.setChoiceModalVisible(false);
     props.setEmailModalVisible(true);
   }
 
   return (
     <Modal
-      isOpen={props.learnModalVisible}
+      isOpen={props.choiceModalVisible}
       onRequestClose={close}
       contentLabel="Learn More Modal"
       className="content"
