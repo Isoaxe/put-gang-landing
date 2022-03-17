@@ -5,7 +5,7 @@ import Nav from "./../components/Nav";
 import Hero from "./../components/Hero";
 import Membership from "./../components/Membership";
 import EmailSignup from "./../components/EmailSignup";
-import LearnModal from "./../components/LearnModal";
+import ChoiceModal from "./../components/ChoiceModal";
 import EmailModal from "./../components/EmailModal";
 import PaymentsModal from "./../components/PaymentsModal";
 import PlaidLink from "./../components/PlaidLink";
@@ -58,7 +58,7 @@ function App() {
         <PlaidLink />
         <EmailSignup />
       </div>
-      <LearnModal
+      <ChoiceModal
         choiceModalVisible={choiceModalVisible}
         setChoiceModalVisible={setChoiceModalVisible}
         membershipLevel={membershipLevel}

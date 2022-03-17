@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import "./css/LearnModal.css";
+import "./css/ChoiceModal.css";
 import "./css/shared.css";
 
 function LearnModal(props) {
