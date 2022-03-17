@@ -42,7 +42,9 @@ function LearnModal(props) {
           <h5 className="modal-subheading">by Put Gang</h5>
           <h2 className="modal-heading-price">${amount} / month</h2>
         </header>
-        <h4 className="modal-payment-options">Pay by card</h4>
+        <h4 className="modal-payment-options">
+          Pay by <span>card</span>
+        </h4>
         <div className="modal-options-container">
           <div className="modal-option">
             <label for="watch">
@@ -77,7 +79,9 @@ function LearnModal(props) {
             />
           </div>
         </div>
-        <h4 className="modal-payment-options">Or pay by bank transfer</h4>
+        <h4 className="modal-payment-options">
+          Or pay by <span>bank transfer</span>
+        </h4>
         <div className="modal-button-container">
           <button onClick={continueToEmail}>Continue</button>
         </div>
