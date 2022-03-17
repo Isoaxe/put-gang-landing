@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { usePlaidLink } from "react-plaid-link";
 import { API_URL } from "./../util/urls";
 
-const PlaidLink = (props) => {
+function PlaidLink(props) {
   const [token, setToken] = useState("");
   const { achPayments } = props;
 
@@ -59,6 +59,6 @@ const PlaidLink = (props) => {
   }, [achPayments, ready, open]);
 
   return <div></div>;
-};
+}
 
 export default PlaidLink;
