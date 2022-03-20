@@ -15,7 +15,7 @@ function EmailModal(props) {
   const [customerId, setCustomerId] = useState("");
 
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod } = props;
+  const { membershipLevel, paymentMethod, email } = props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
@@ -25,7 +25,7 @@ function EmailModal(props) {
   }
 
   function checkEmail() {
-    if (props.email?.indexOf("@") !== -1) {
+    if (email?.indexOf("@") !== -1) {
       setEmailOk(true);
     } else {
       setEmailOk(false);
@@ -34,7 +34,7 @@ function EmailModal(props) {
 
   async function continueToPayments() {
     setIsLoading(true);
-    const { stripeUid } = await createCustomer(props.email);
+    const { stripeUid } = await createCustomer(email);
     const { clientSecret } = await createSubscription(priceId, stripeUid);
     props.setClientSecret(clientSecret);
     props.setStripeUid(stripeUid);
