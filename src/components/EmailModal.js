@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from "@mui/material";
 import PlaidLink from "./PlaidLink";
@@ -50,7 +50,7 @@ function EmailModal(props) {
     }
   }
 
-  async function saveBankAccount() {
+  const saveBankAccount = useCallback(async () => {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,7 +59,7 @@ function EmailModal(props) {
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
-  }
+  }, [accountId, stripeUid]);
 
   useEffect(() => {
     disableButtonContainer();
@@ -68,7 +68,7 @@ function EmailModal(props) {
 
   useEffect(() => {
     if (tokensExchanged) saveBankAccount();
-  });
+  }, [tokensExchanged, saveBankAccount]);
 
   return (
     <Modal
