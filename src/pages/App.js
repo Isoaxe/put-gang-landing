@@ -73,6 +73,7 @@ function App() {
         membershipLevel={membershipLevel}
         paymentMethod={paymentMethod}
         setClientSecret={setClientSecret}
+        stripeUid={stripeUid}
         setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
