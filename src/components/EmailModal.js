@@ -12,7 +12,6 @@ function EmailModal(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
-  const [customerId, setCustomerId] = useState("");
 
   Modal.setAppElement("#root");
   const { membershipLevel, paymentMethod, email } = props;
@@ -38,7 +37,6 @@ function EmailModal(props) {
     const { clientSecret } = await createSubscription(priceId, stripeUid);
     props.setClientSecret(clientSecret);
     props.setStripeUid(stripeUid);
-    setCustomerId(stripeUid);
     setIsLoading(false);
     if (paymentMethod === "card") {
       props.setEmailModalVisible(false);
@@ -63,11 +61,7 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink
-          achPayments={achPayments}
-          setAchPayments={setAchPayments}
-          stripeUid={customerId}
-        />
+        <PlaidLink achPayments={achPayments} setAchPayments={setAchPayments} />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
