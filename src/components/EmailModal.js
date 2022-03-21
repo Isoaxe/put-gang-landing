@@ -13,6 +13,7 @@ function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
+  const [accountId, setAccountId] = useState("");
 
   Modal.setAppElement("#root");
   const { membershipLevel, paymentMethod, email } = props;
@@ -66,6 +67,7 @@ function EmailModal(props) {
           achPayments={achPayments}
           setAchPayments={setAchPayments}
           setTokensExchanged={setTokensExchanged}
+          setAccountId={setAccountId}
         />
         <h3>Enter your email:</h3>
         <TextField
