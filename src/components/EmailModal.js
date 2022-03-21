@@ -58,11 +58,16 @@ function EmailModal(props) {
     };
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
+    console.log(jsonResponse);
   }
 
   useEffect(() => {
     disableButtonContainer();
     checkEmail();
+  });
+
+  useEffect(() => {
+    if (tokensExchanged) saveBankAccount();
   });
 
   return (
