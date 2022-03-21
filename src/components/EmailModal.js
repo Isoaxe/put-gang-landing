@@ -12,6 +12,7 @@ function EmailModal(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
+  const [tokensExchanged, setTokensExchanged] = useState(false);
 
   Modal.setAppElement("#root");
   const { membershipLevel, paymentMethod, email } = props;
@@ -61,7 +62,11 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink achPayments={achPayments} setAchPayments={setAchPayments} />
+        <PlaidLink
+          achPayments={achPayments}
+          setAchPayments={setAchPayments}
+          setTokensExchanged={setTokensExchanged}
+        />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
