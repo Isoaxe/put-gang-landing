@@ -5,7 +5,7 @@ import PlaidLink from "./PlaidLink";
 import { createCustomer, createSubscription } from "./../util/stripe";
 import { disableButtonContainer } from "./../util/helpers";
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from "./../util/constants";
-import { API_URL } from "./../util/urls";
+import { API_URL, CONSOLE_URL } from "./../util/urls";
 import "./css/EmailModal.css";
 import "./css/shared.css";
 
@@ -17,7 +17,8 @@ function EmailModal(props) {
   const [accountId, setAccountId] = useState("");
 
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod, email, stripeUid } = props;
+  const { membershipLevel, paymentMethod, email, stripeUid, referrerId } =
+    props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
@@ -59,7 +60,8 @@ function EmailModal(props) {
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
-  }, [accountId, stripeUid]);
+    window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
+  }, [accountId, stripeUid, referrerId, membershipLevel, email]);
 
   useEffect(() => {
     disableButtonContainer();
