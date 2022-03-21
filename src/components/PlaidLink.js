@@ -4,7 +4,7 @@ import { API_URL } from "./../util/urls";
 
 function PlaidLink(props) {
   const [token, setToken] = useState("");
-  const { achPayments, setAchPayments, stripeUid } = props;
+  const { achPayments, setAchPayments } = props;
 
   async function createLinkToken() {
     const fetchConfig = {
@@ -19,33 +19,29 @@ function PlaidLink(props) {
     setToken(link_token);
   }
 
-  const onSuccess = useCallback(
-    (publicToken, metadata) => {
-      const { account_id } = metadata;
+  const onSuccess = useCallback((publicToken, metadata) => {
+    const { account_id } = metadata;
 
-      // Exchange a public token for an access one.
-      async function exchangeTokens() {
-        const fetchConfig = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            public_token: publicToken,
-            account_id,
-            stripeUid,
-          }),
-        };
-        const response = await fetch(
-          API_URL + "/plaid/exchange-tokens",
-          fetchConfig
-        );
-        const jsonResponse = await response.json();
-        console.log("Exchange token response:", jsonResponse);
-      }
+    // Exchange a public token for an access one.
+    async function exchangeTokens() {
+      const fetchConfig = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          public_token: publicToken,
+          account_id,
+        }),
+      };
+      const response = await fetch(
+        API_URL + "/plaid/exchange-tokens",
+        fetchConfig
+      );
+      const jsonResponse = await response.json();
+      console.log("Exchange token response:", jsonResponse);
+    }
 
-      exchangeTokens();
-    },
-    [stripeUid]
-  );
+    exchangeTokens();
+  }, []);
 
   const { open, ready } = usePlaidLink({
     token,
