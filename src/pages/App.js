@@ -5,7 +5,7 @@ import Nav from "./../components/Nav";
 import Hero from "./../components/Hero";
 import Membership from "./../components/Membership";
 import EmailSignup from "./../components/EmailSignup";
-import LearnModal from "./../components/LearnModal";
+import ChoiceModal from "./../components/ChoiceModal";
 import EmailModal from "./../components/EmailModal";
 import PaymentsModal from "./../components/PaymentsModal";
 import { STRIPE_PUBLIC_KEY_TEST } from "./../util/constants";
@@ -14,10 +14,11 @@ import "./css/App.css";
 const stripePromise = loadStripe(STRIPE_PUBLIC_KEY_TEST);
 
 function App() {
-  const [learnModalVisible, setLearnModalVisible] = useState(false);
+  const [choiceModalVisible, setChoiceModalVisible] = useState(false);
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
-  const [learnModalChoice, setLearnModalChoice] = useState("");
+  const [membershipLevel, setMembershipLevel] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
@@ -35,7 +36,7 @@ function App() {
   const options = { clientSecret, appearance };
 
   useEffect(() => {
-    if (membLvl) setLearnModalChoice(membLvl);
+    if (membLvl) setMembershipLevel(membLvl);
     if (refId) setReferrerId(refId);
   }, [membLvl, refId]);
 
@@ -45,29 +46,35 @@ function App() {
         <Nav />
       </div>
       <Hero
-        setLearnModalVisible={setLearnModalVisible}
-        setLearnModalChoice={setLearnModalChoice}
+        setChoiceModalVisible={setChoiceModalVisible}
+        setMembershipLevel={setMembershipLevel}
       />
       <div className="inner">
         <Membership
-          setLearnModalVisible={setLearnModalVisible}
-          setLearnModalChoice={setLearnModalChoice}
+          setChoiceModalVisible={setChoiceModalVisible}
+          setMembershipLevel={setMembershipLevel}
+          setPaymentMethod={setPaymentMethod}
         />
         <EmailSignup />
       </div>
-      <LearnModal
-        learnModalVisible={learnModalVisible}
-        setLearnModalVisible={setLearnModalVisible}
-        learnModalChoice={learnModalChoice}
-        setLearnModalChoice={setLearnModalChoice}
+      <ChoiceModal
+        choiceModalVisible={choiceModalVisible}
+        setChoiceModalVisible={setChoiceModalVisible}
+        membershipLevel={membershipLevel}
+        setMembershipLevel={setMembershipLevel}
+        paymentMethod={paymentMethod}
+        setPaymentMethod={setPaymentMethod}
         setEmailModalVisible={setEmailModalVisible}
       />
       <EmailModal
-        learnModalChoice={learnModalChoice}
         emailModalVisible={emailModalVisible}
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
+        membershipLevel={membershipLevel}
+        referrerId={referrerId}
+        paymentMethod={paymentMethod}
         setClientSecret={setClientSecret}
+        stripeUid={stripeUid}
         setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
@@ -76,7 +83,7 @@ function App() {
         <Elements stripe={stripePromise} options={options}>
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
-            learnModalChoice={learnModalChoice}
+            membershipLevel={membershipLevel}
             referrerId={referrerId}
             stripeUid={stripeUid}
             email={email}

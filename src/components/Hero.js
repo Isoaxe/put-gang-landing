@@ -4,8 +4,8 @@ import "./css/Hero.css";
 
 function Hero(props) {
   function openModal() {
-    props.setLearnModalVisible(true);
-    props.setLearnModalChoice("watch");
+    props.setChoiceModalVisible(true);
+    props.setMembershipLevel("watch");
   }
 
   return (

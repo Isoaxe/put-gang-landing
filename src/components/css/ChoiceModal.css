@@ -3,7 +3,6 @@
   border-bottom: 1px solid #e0e7ed;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  margin-bottom: 30px;
 }
 
 .modal-heading {
@@ -19,6 +18,22 @@
 
 .modal-heading-price {
   margin-bottom: 30px;
+  color: #ae8df4;
+}
+
+.modal-payment-options {
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e7ed;
+}
+
+.payment-text {
+  font-family: "Montserrat-Semibold";
+  color: #36434d;
+}
+
+.discount-text {
   color: #ae8df4;
 }
 

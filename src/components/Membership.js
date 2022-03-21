@@ -4,13 +4,15 @@ import "./css/Membership.css";
 
 function Membership(props) {
   function openModalWithWatch() {
-    props.setLearnModalVisible(true);
-    props.setLearnModalChoice("watch");
+    props.setChoiceModalVisible(true);
+    props.setMembershipLevel("watch");
+    props.setPaymentMethod("card");
   }
 
   function openModalWithJoin() {
-    props.setLearnModalVisible(true);
-    props.setLearnModalChoice("join");
+    props.setChoiceModalVisible(true);
+    props.setMembershipLevel("join");
+    props.setPaymentMethod("card");
   }
 
   return (
