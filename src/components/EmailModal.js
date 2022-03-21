@@ -5,6 +5,7 @@ import PlaidLink from "./PlaidLink";
 import { createCustomer, createSubscription } from "./../util/stripe";
 import { disableButtonContainer } from "./../util/helpers";
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from "./../util/constants";
+import { API_URL } from "./../util/urls";
 import "./css/EmailModal.css";
 import "./css/shared.css";
 
@@ -16,7 +17,7 @@ function EmailModal(props) {
   const [accountId, setAccountId] = useState("");
 
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod, email } = props;
+  const { membershipLevel, paymentMethod, email, stripeUid } = props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
@@ -47,6 +48,16 @@ function EmailModal(props) {
       setAchPayments(true);
       props.setEmailModalVisible(false);
     }
+  }
+
+  async function saveBankAccount() {
+    const fetchConfig = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ accountId, stripeUid }),
+    };
+    const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
+    const jsonResponse = await response.json();
   }
 
   useEffect(() => {
