@@ -92,6 +92,7 @@ function EmailModal(props) {
           setAchPayments={setAchPayments}
           setTokensExchanged={setTokensExchanged}
           setAccountId={setAccountId}
+          setIsLoading={setIsLoading}
         />
         <h3>Enter your email:</h3>
         <TextField
