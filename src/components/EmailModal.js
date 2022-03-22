@@ -65,9 +65,10 @@ function EmailModal(props) {
     };
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
+    setIsLoading(false);
     console.log(jsonResponse);
     window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
-  }, [accountId, stripeUid, referrerId, membershipLevel, email]);
+  }, [accountId, stripeUid, referrerId, membershipLevel, email, setIsLoading]);
 
   useEffect(() => {
     disableButtonContainer();
