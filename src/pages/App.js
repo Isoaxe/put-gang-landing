@@ -94,6 +94,11 @@ function App() {
           />
         </Elements>
       )}
+      {isLoading && (
+        <div className="spinner-main">
+          <CircularProgress size={50} />
+        </div>
+      )}
     </div>
   );
 }

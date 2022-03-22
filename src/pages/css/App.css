@@ -14,3 +14,11 @@
   margin-left: 15px;
   margin-right: 15px;
 }
+
+.spinner-main {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -40%);
+}
