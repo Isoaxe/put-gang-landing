@@ -10,15 +10,21 @@ import "./css/EmailModal.css";
 import "./css/shared.css";
 
 function EmailModal(props) {
-  const [isLoading, setIsLoading] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
   const [accountId, setAccountId] = useState("");
 
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod, email, stripeUid, referrerId } =
-    props;
+  const {
+    membershipLevel,
+    paymentMethod,
+    email,
+    stripeUid,
+    referrerId,
+    isLoading,
+    setIsLoading,
+  } = props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
