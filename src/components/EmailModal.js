@@ -13,7 +13,7 @@ function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
-  const [accountId, setAccountId] = useState("");
+  const [plaidAccountId, setPlaidAccountId] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
@@ -66,18 +66,18 @@ function EmailModal(props) {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ accountId, stripeUid }),
+      body: JSON.stringify({ plaidAccountId, stripeUid }),
     };
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
-  }, [accountId, stripeUid]);
+  }, [plaidAccountId, stripeUid]);
 
   const makeAchPayment = useCallback(async () => {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ accountId, paymentIntentId }),
+      body: JSON.stringify({ plaidAccountId, paymentIntentId }),
     };
     const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
     const jsonResponse = await response.json();
@@ -86,7 +86,7 @@ function EmailModal(props) {
     window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
   }, [
     paymentIntentId,
-    accountId,
+    plaidAccountId,
     setIsLoading,
     referrerId,
     membershipLevel,
@@ -120,7 +120,7 @@ function EmailModal(props) {
           achPayments={achPayments}
           setAchPayments={setAchPayments}
           setTokensExchanged={setTokensExchanged}
-          setAccountId={setAccountId}
+          setPlaidAccountId={setPlaidAccountId}
           setIsLoading={setIsLoading}
         />
         <h3>Enter your email:</h3>
