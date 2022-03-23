@@ -44,8 +44,8 @@ function EmailModal(props) {
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
-    const { clientSecret } = await createSubscription(priceId, stripe_uid);
-    props.setClientSecret(clientSecret);
+    const { client_secret } = await createSubscription(priceId, stripe_uid);
+    props.setClientSecret(client_secret);
     props.setStripeUid(stripe_uid);
     setIsLoading(false);
     if (paymentMethod === "card") {
