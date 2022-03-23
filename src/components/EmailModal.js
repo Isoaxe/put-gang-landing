@@ -14,6 +14,7 @@ function EmailModal(props) {
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
   const [accountId, setAccountId] = useState("");
+  const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
   const {
@@ -44,9 +45,13 @@ function EmailModal(props) {
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
-    const { client_secret } = await createSubscription(priceId, stripe_uid);
+    const { client_secret, payment_intent_id } = await createSubscription(
+      priceId,
+      stripe_uid
+    );
     props.setClientSecret(client_secret);
     props.setStripeUid(stripe_uid);
+    setPaymentIntentId(payment_intent_id);
     setIsLoading(false);
     if (paymentMethod === "card") {
       props.setEmailModalVisible(false);
