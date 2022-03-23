@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from "@mui/material";
 import PlaidLink from "./PlaidLink";
@@ -62,7 +62,7 @@ function EmailModal(props) {
     }
   }
 
-  const saveBankAccount = useCallback(async () => {
+  async function saveBankAccount() {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -73,7 +73,7 @@ function EmailModal(props) {
     setIsLoading(false);
     console.log(jsonResponse);
     window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
-  }, [accountId, stripeUid, referrerId, membershipLevel, email, setIsLoading]);
+  }
 
   async function makeAchPayment() {
     const fetchConfig = {
