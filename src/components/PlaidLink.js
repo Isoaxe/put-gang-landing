@@ -7,7 +7,7 @@ function PlaidLink(props) {
   const {
     achPayments,
     setAchPayments,
-    setAccountId,
+    setPlaidAccountId,
     setTokensExchanged,
     setIsLoading,
   } = props;
@@ -28,7 +28,7 @@ function PlaidLink(props) {
   const onSuccess = useCallback(
     (publicToken, metadata) => {
       const { account_id } = metadata;
-      setAccountId(account_id);
+      setPlaidAccountId(account_id);
 
       // Exchange a public token for an access one.
       async function exchangeTokens() {
@@ -53,7 +53,7 @@ function PlaidLink(props) {
 
       exchangeTokens();
     },
-    [setAccountId, setTokensExchanged, setIsLoading]
+    [setPlaidAccountId, setTokensExchanged, setIsLoading]
   );
 
   const { open, ready } = usePlaidLink({
