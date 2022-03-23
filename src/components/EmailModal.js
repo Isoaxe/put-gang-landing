@@ -79,7 +79,7 @@ function EmailModal(props) {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plaidAccountId, paymentIntentId }),
+      body: JSON.stringify({ bankAccountId, paymentIntentId }),
     };
     const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
     const jsonResponse = await response.json();
@@ -88,7 +88,7 @@ function EmailModal(props) {
     window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
   }, [
     paymentIntentId,
-    plaidAccountId,
+    bankAccountId,
     setIsLoading,
     referrerId,
     membershipLevel,
