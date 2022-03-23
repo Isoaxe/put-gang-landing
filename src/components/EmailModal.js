@@ -14,6 +14,7 @@ function EmailModal(props) {
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
   const [plaidAccountId, setPlaidAccountId] = useState("");
+  const [bankAccountId, setBankAccountId] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
@@ -70,6 +71,7 @@ function EmailModal(props) {
     };
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
+    setBankAccountId(jsonResponse.bank_account_id);
     console.log(jsonResponse);
   }, [plaidAccountId, stripeUid]);
 
