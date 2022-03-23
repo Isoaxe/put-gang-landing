@@ -72,7 +72,6 @@ function EmailModal(props) {
     const jsonResponse = await response.json();
     setIsLoading(false);
     console.log(jsonResponse);
-    window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
   }
 
   async function makeAchPayment() {
@@ -84,6 +83,7 @@ function EmailModal(props) {
     const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
+    window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
   }
 
   useEffect(() => {
