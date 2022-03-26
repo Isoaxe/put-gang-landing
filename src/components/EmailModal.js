@@ -71,7 +71,6 @@ function EmailModal(props) {
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
     return jsonResponse;
-    console.log(jsonResponse);
   }, [plaidAccountId, stripeUid]);
 
   const makeAchPayment = useCallback(
