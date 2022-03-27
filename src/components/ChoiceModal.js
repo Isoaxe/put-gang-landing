@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { API_URL } from "./../util/urls";
 import "./css/ChoiceModal.css";
@@ -33,6 +33,10 @@ function ChoiceModal(props) {
     const jsonResponse = await response.json();
     setPaymentChoice(jsonResponse.paymentChoice);
   }
+
+  useEffect(() => {
+    getPaymentConfig();
+  }, []);
 
   return (
     <Modal
