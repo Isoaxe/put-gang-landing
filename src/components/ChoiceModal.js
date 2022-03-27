@@ -48,6 +48,7 @@ function LearnModal(props) {
         <h4 className="modal-payment-options">
           Pay by <span className="payment-text">card</span>
         </h4>
+        {/*
         <div className="modal-options-container">
           <div className="modal-option">
             <label for="watch-card">
@@ -82,10 +83,7 @@ function LearnModal(props) {
             />
           </div>
         </div>
-        <h4 className="modal-payment-options">
-          Or pay by <span className="payment-text">bank transfer </span>(
-          <span className="discount-text">25% discount</span>)
-        </h4>
+        */}
         <div className="modal-options-container">
           <div className="modal-option">
             <label for="watch-ach">
