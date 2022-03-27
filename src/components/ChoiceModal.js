@@ -39,7 +39,7 @@ function ChoiceModal(props) {
           <h2 className="modal-heading-price">${amount} / month</h2>
         </header>
         <h4 className="modal-payment-options">
-          Pay by <span className="payment-text">card</span>
+          Join with <span className="payment-text">Plaid</span>
         </h4>
         <div className="modal-options-container">
           <div className="modal-option">
