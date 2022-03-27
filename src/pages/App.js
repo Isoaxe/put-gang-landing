@@ -64,7 +64,6 @@ function App() {
         setChoiceModalVisible={setChoiceModalVisible}
         membershipLevel={membershipLevel}
         setMembershipLevel={setMembershipLevel}
-        paymentMethod={paymentMethod}
         setPaymentMethod={setPaymentMethod}
         setEmailModalVisible={setEmailModalVisible}
       />
