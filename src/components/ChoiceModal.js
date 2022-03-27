@@ -41,42 +41,6 @@ function ChoiceModal(props) {
         <h4 className="modal-payment-options">
           Pay by <span className="payment-text">card</span>
         </h4>
-        {/*
-        <div className="modal-options-container">
-          <div className="modal-option">
-            <label for="watch-card">
-              <p className="modal-option-name">Watch the discussion</p>
-              <p className="modal-option-price">$50 / month</p>
-            </label>
-            <input
-              type="radio"
-              name="price-options"
-              id="watch-card"
-              onChange={() => {
-                props.setMembershipLevel("watch");
-                props.setPaymentMethod("card");
-              }}
-              checked={membershipLevel === "watch"}
-            />
-          </div>
-          <div className="modal-option">
-            <label for="join-card">
-              <p className="modal-option-name">Join the discussion</p>
-              <p className="modal-option-price">$150 / month</p>
-            </label>
-            <input
-              type="radio"
-              name="price-options"
-              id="join-card"
-              onChange={() => {
-                props.setMembershipLevel("join");
-                props.setPaymentMethod("card");
-              }}
-              checked={membershipLevel === "join"}
-            />
-          </div>
-        </div>
-        */}
         <div className="modal-options-container">
           <div className="modal-option">
             <label for="watch-ach">
