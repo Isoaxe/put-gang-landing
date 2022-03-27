@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import "./css/ChoiceModal.css";
 import "./css/shared.css";
 
-function LearnModal(props) {
+function ChoiceModal(props) {
   Modal.setAppElement("#root");
   const { membershipLevel } = props;
   let action, amount;
@@ -119,4 +119,4 @@ function LearnModal(props) {
   );
 }
 
-export default LearnModal;
+export default ChoiceModal;
