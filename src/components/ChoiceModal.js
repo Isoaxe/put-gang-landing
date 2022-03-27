@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Modal from "react-modal";
 import "./css/ChoiceModal.css";
 import "./css/shared.css";
 
 function ChoiceModal(props) {
+  const [paymentChoice, setPaymentChoice] = useState(false);
+
   Modal.setAppElement("#root");
   const { membershipLevel } = props;
   let action, amount;
