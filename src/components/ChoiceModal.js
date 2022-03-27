@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import { API_URL } from "./../util/urls";
 import "./css/ChoiceModal.css";
 import "./css/shared.css";
 
@@ -25,6 +26,12 @@ function ChoiceModal(props) {
   function continueToEmail() {
     props.setChoiceModalVisible(false);
     props.setEmailModalVisible(true);
+  }
+
+  async function getPaymentConfig() {
+    const response = await fetch(API_URL + "/config/payment-config");
+    const jsonResponse = await response.json();
+    setPaymentChoice(jsonResponse.paymentChoice);
   }
 
   return (
