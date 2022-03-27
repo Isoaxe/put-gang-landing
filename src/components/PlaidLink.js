@@ -4,8 +4,13 @@ import { API_URL } from "./../util/urls";
 
 function PlaidLink(props) {
   const [token, setToken] = useState("");
-  const { achPayments, setAchPayments, setAccountId, setTokensExchanged } =
-    props;
+  const {
+    achPayments,
+    setAchPayments,
+    setPlaidAccountId,
+    setTokensExchanged,
+    setIsLoading,
+  } = props;
 
   async function createLinkToken() {
     const fetchConfig = {
@@ -23,10 +28,11 @@ function PlaidLink(props) {
   const onSuccess = useCallback(
     (publicToken, metadata) => {
       const { account_id } = metadata;
-      setAccountId(account_id);
+      setPlaidAccountId(account_id);
 
       // Exchange a public token for an access one.
       async function exchangeTokens() {
+        setIsLoading(true);
         const fetchConfig = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -47,7 +53,7 @@ function PlaidLink(props) {
 
       exchangeTokens();
     },
-    [setAccountId, setTokensExchanged]
+    [setPlaidAccountId, setTokensExchanged, setIsLoading]
   );
 
   const { open, ready } = usePlaidLink({

@@ -10,15 +10,22 @@ import "./css/EmailModal.css";
 import "./css/shared.css";
 
 function EmailModal(props) {
-  const [isLoading, setIsLoading] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
   const [achPayments, setAchPayments] = useState(false);
   const [tokensExchanged, setTokensExchanged] = useState(false);
-  const [accountId, setAccountId] = useState("");
+  const [plaidAccountId, setPlaidAccountId] = useState("");
+  const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod, email, stripeUid, referrerId } =
-    props;
+  const {
+    membershipLevel,
+    paymentMethod,
+    email,
+    stripeUid,
+    referrerId,
+    isLoading,
+    setIsLoading,
+  } = props;
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
@@ -38,9 +45,13 @@ function EmailModal(props) {
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
-    const { clientSecret } = await createSubscription(priceId, stripe_uid);
-    props.setClientSecret(clientSecret);
+    const { client_secret, payment_intent_id } = await createSubscription(
+      priceId,
+      stripe_uid
+    );
+    props.setClientSecret(client_secret);
     props.setStripeUid(stripe_uid);
+    setPaymentIntentId(payment_intent_id);
     setIsLoading(false);
     if (paymentMethod === "card") {
       props.setEmailModalVisible(false);
@@ -55,13 +66,35 @@ function EmailModal(props) {
     const fetchConfig = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ accountId, stripeUid }),
+      body: JSON.stringify({ plaidAccountId, stripeUid }),
     };
     const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
-    window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
-  }, [accountId, stripeUid, referrerId, membershipLevel, email]);
+    return jsonResponse;
+  }, [plaidAccountId, stripeUid]);
+
+  const makeAchPayment = useCallback(
+    async (bankAccountId) => {
+      const fetchConfig = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bankAccountId, paymentIntentId }),
+      };
+      const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
+      const jsonResponse = await response.json();
+      setIsLoading(false);
+      console.log(jsonResponse);
+      window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
+    },
+    [
+      paymentIntentId,
+      setIsLoading,
+      referrerId,
+      membershipLevel,
+      stripeUid,
+      email,
+    ]
+  );
 
   useEffect(() => {
     disableButtonContainer();
@@ -69,8 +102,12 @@ function EmailModal(props) {
   });
 
   useEffect(() => {
-    if (tokensExchanged) saveBankAccount();
-  }, [tokensExchanged, saveBankAccount]);
+    async function runBanking() {
+      const { bank_account_id } = await saveBankAccount();
+      await makeAchPayment(bank_account_id);
+    }
+    if (tokensExchanged) runBanking();
+  }, [saveBankAccount, makeAchPayment, tokensExchanged]);
 
   return (
     <Modal
@@ -85,7 +122,8 @@ function EmailModal(props) {
           achPayments={achPayments}
           setAchPayments={setAchPayments}
           setTokensExchanged={setTokensExchanged}
-          setAccountId={setAccountId}
+          setPlaidAccountId={setPlaidAccountId}
+          setIsLoading={setIsLoading}
         />
         <h3>Enter your email:</h3>
         <TextField

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { CircularProgress } from "@mui/material";
 import Nav from "./../components/Nav";
 import Hero from "./../components/Hero";
 import Membership from "./../components/Membership";
@@ -23,6 +24,7 @@ function App() {
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const currentUrl = new URL(window.location.href);
   const membLvl = currentUrl.searchParams.get("membLvl"); // Membership level.
@@ -78,6 +80,8 @@ function App() {
         setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
       {clientSecret && (
         <Elements stripe={stripePromise} options={options}>
@@ -89,6 +93,11 @@ function App() {
             email={email}
           />
         </Elements>
+      )}
+      {isLoading && (
+        <div className="spinner-main">
+          <CircularProgress size={50} />
+        </div>
       )}
     </div>
   );
