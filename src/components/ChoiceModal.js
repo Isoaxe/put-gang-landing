@@ -4,22 +4,15 @@ import "./css/shared.css";
 
 function LearnModal(props) {
   Modal.setAppElement("#root");
-  const { membershipLevel, paymentMethod } = props;
-  const choice = `${membershipLevel}-${paymentMethod}`;
+  const { membershipLevel } = props;
   let action, amount;
 
-  if (choice === "watch-card") {
+  if (membershipLevel === "watch") {
     action = "Watch";
     amount = "50";
-  } else if (choice === "join-card") {
+  } else if (membershipLevel === "join") {
     action = "Join";
     amount = "150";
-  } else if (choice === "watch-ach") {
-    action = "Watch";
-    amount = "37.50";
-  } else if (choice === "join-ach") {
-    action = "Join";
-    amount = "112.50";
   }
 
   function close() {
@@ -63,7 +56,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("watch");
                 props.setPaymentMethod("card");
               }}
-              checked={choice === "watch-card"}
+              checked={membershipLevel === "watch"}
             />
           </div>
           <div className="modal-option">
@@ -79,7 +72,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("join");
                 props.setPaymentMethod("card");
               }}
-              checked={choice === "join-card"}
+              checked={membershipLevel === "join"}
             />
           </div>
         </div>
@@ -88,7 +81,7 @@ function LearnModal(props) {
           <div className="modal-option">
             <label for="watch-ach">
               <p className="modal-option-name">Watch the discussion</p>
-              <p className="modal-option-price">$37.50 / month</p>
+              <p className="modal-option-price">$50 / month</p>
             </label>
             <input
               type="radio"
@@ -98,13 +91,13 @@ function LearnModal(props) {
                 props.setMembershipLevel("watch");
                 props.setPaymentMethod("ach");
               }}
-              checked={choice === "watch-ach"}
+              checked={membershipLevel === "watch"}
             />
           </div>
           <div className="modal-option">
             <label for="join-ach">
               <p className="modal-option-name">Join the discussion</p>
-              <p className="modal-option-price">$112.50 / month</p>
+              <p className="modal-option-price">$150 / month</p>
             </label>
             <input
               type="radio"
@@ -114,7 +107,7 @@ function LearnModal(props) {
                 props.setMembershipLevel("join");
                 props.setPaymentMethod("ach");
               }}
-              checked={choice === "join-ach"}
+              checked={membershipLevel === "join"}
             />
           </div>
         </div>
