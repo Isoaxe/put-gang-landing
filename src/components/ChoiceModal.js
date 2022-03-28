@@ -39,6 +39,7 @@ function ChoiceModal(props) {
 
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
+    setPaymentMethod(newValue ? "card" : "ach");
   };
 
   async function getPaymentConfig() {
@@ -85,10 +86,7 @@ function ChoiceModal(props) {
               type="radio"
               name="price-options"
               id="watch-ach"
-              onChange={() => {
-                setMembershipLevel("watch");
-                setPaymentMethod("ach");
-              }}
+              onChange={() => setMembershipLevel("watch")}
               checked={membershipLevel === "watch"}
             />
           </div>
@@ -101,10 +99,7 @@ function ChoiceModal(props) {
               type="radio"
               name="price-options"
               id="join-ach"
-              onChange={() => {
-                setMembershipLevel("join");
-                setPaymentMethod("ach");
-              }}
+              onChange={() => setMembershipLevel("join")}
               checked={membershipLevel === "join"}
             />
           </div>
