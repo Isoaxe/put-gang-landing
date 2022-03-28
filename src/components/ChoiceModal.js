@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { Tab, Tabs } from "@mui/material";
 import { API_URL } from "./../util/urls";
 import "./css/ChoiceModal.css";
 import "./css/shared.css";
 
 function ChoiceModal(props) {
   const [paymentChoice, setPaymentChoice] = useState(false);
+  const [tabValue, setTabValue] = useState(0);
 
   Modal.setAppElement("#root");
   const { membershipLevel } = props;
@@ -27,6 +29,10 @@ function ChoiceModal(props) {
     props.setChoiceModalVisible(false);
     props.setEmailModalVisible(true);
   }
+
+  const handleChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
 
   async function getPaymentConfig() {
     const response = await fetch(API_URL + "/config/payment-options");
@@ -52,9 +58,16 @@ function ChoiceModal(props) {
           <h5 className="modal-subheading">by Put Gang</h5>
           <h2 className="modal-heading-price">${amount} / month</h2>
         </header>
-        <h4 className="modal-payment-options">
-          Join with <span className="payment-text">Plaid</span>
-        </h4>
+        {!paymentChoice ? (
+          <h4 className="modal-payment-options">
+            Join with <span className="payment-text">Plaid</span>
+          </h4>
+        ) : (
+          <Tabs value={tabValue} onChange={handleChange} variant="fullWidth">
+            <Tab label="Join with Plaid" id="ach" />
+            <Tab label="Join with Card" id="card" />
+          </Tabs>
+        )}
         <div className="modal-options-container">
           <div className="modal-option">
             <label for="watch-ach">
