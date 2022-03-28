@@ -66,11 +66,7 @@ function ChoiceModal(props) {
           <h5 className="modal-subheading">by Put Gang</h5>
           <h2 className="modal-heading-price">${amount} / month</h2>
         </header>
-        {!paymentChoice ? (
-          <h4 className="modal-payment-options">
-            Join with <span className="payment-text">Plaid</span>
-          </h4>
-        ) : (
+        {paymentChoice && (
           <Tabs value={tabValue} onChange={handleChange} variant="fullWidth">
             <Tab label="Join with Plaid" id="ach" />
             <Tab label="Join with Card" id="card" />

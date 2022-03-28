@@ -21,18 +21,6 @@
   color: #ae8df4;
 }
 
-.modal-payment-options {
-  margin: 0px;
-  padding-top: 20px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e0e7ed;
-}
-
-.payment-text {
-  font-family: "Montserrat-Semibold";
-  color: #36434d;
-}
-
 .modal-options-container {
   font-family: "Montserrat-SemiBold";
   text-align: left;
