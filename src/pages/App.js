@@ -19,7 +19,7 @@ function App() {
   const [emailModalVisible, setEmailModalVisible] = useState(false);
   const [paymentsModalVisible, setPaymentsModalVisible] = useState(false);
   const [membershipLevel, setMembershipLevel] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("ach");
   const [referrerId, setReferrerId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [stripeUid, setStripeUid] = useState("");
@@ -55,7 +55,6 @@ function App() {
         <Membership
           setChoiceModalVisible={setChoiceModalVisible}
           setMembershipLevel={setMembershipLevel}
-          setPaymentMethod={setPaymentMethod}
         />
         <EmailSignup />
       </div>
@@ -64,7 +63,6 @@ function App() {
         setChoiceModalVisible={setChoiceModalVisible}
         membershipLevel={membershipLevel}
         setMembershipLevel={setMembershipLevel}
-        paymentMethod={paymentMethod}
         setPaymentMethod={setPaymentMethod}
         setEmailModalVisible={setEmailModalVisible}
       />

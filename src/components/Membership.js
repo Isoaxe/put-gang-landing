@@ -6,13 +6,11 @@ function Membership(props) {
   function openModalWithWatch() {
     props.setChoiceModalVisible(true);
     props.setMembershipLevel("watch");
-    props.setPaymentMethod("card");
   }
 
   function openModalWithJoin() {
     props.setChoiceModalVisible(true);
     props.setMembershipLevel("join");
-    props.setPaymentMethod("card");
   }
 
   return (
