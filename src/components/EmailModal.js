@@ -18,11 +18,17 @@ function EmailModal(props) {
 
   Modal.setAppElement("#root");
   const {
+    emailModalVisible,
+    setEmailModalVisible,
+    setPaymentsModalVisible,
     membershipLevel,
-    paymentMethod,
-    email,
-    stripeUid,
     referrerId,
+    paymentMethod,
+    setClientSecret,
+    email,
+    setEmail,
+    stripeUid,
+    setStripeUid,
     isLoading,
     setIsLoading,
   } = props;
@@ -31,7 +37,7 @@ function EmailModal(props) {
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
 
   function close() {
-    props.setEmailModalVisible(false);
+    setEmailModalVisible(false);
   }
 
   function checkEmail() {
@@ -49,16 +55,16 @@ function EmailModal(props) {
       priceId,
       stripe_uid
     );
-    props.setClientSecret(client_secret);
-    props.setStripeUid(stripe_uid);
+    setClientSecret(client_secret);
+    setStripeUid(stripe_uid);
     setPaymentIntentId(payment_intent_id);
     setIsLoading(false);
     if (paymentMethod === "card") {
-      props.setEmailModalVisible(false);
-      props.setPaymentsModalVisible(true);
+      setEmailModalVisible(false);
+      setPaymentsModalVisible(true);
     } else if (paymentMethod === "ach") {
       setAchPayments(true);
-      props.setEmailModalVisible(false);
+      setEmailModalVisible(false);
     }
   }
 
@@ -111,7 +117,7 @@ function EmailModal(props) {
 
   return (
     <Modal
-      isOpen={props.emailModalVisible}
+      isOpen={emailModalVisible}
       onRequestClose={close}
       contentLabel="Stripe Email Modal"
       className="content"
@@ -129,7 +135,7 @@ function EmailModal(props) {
         <TextField
           label="email"
           sx={{ width: "70%" }}
-          onChange={(event) => props.setEmail(event.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
         />
         {isLoading ? (
           <div className="spinner">
