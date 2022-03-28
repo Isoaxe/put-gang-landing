@@ -43,7 +43,7 @@ function ChoiceModal(props) {
   };
 
   async function getPaymentConfig() {
-    const response = await fetch(API_URL + "/config/payment-options");
+    const response = await fetch(API_URL + "/config/all");
     const jsonResponse = await response.json();
     setPaymentChoice(jsonResponse.paymentChoices);
   }
