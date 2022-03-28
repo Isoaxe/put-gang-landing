@@ -10,7 +10,14 @@ function ChoiceModal(props) {
   const [tabValue, setTabValue] = useState(0);
 
   Modal.setAppElement("#root");
-  const { membershipLevel } = props;
+  const {
+    choiceModalVisible,
+    setChoiceModalVisible,
+    membershipLevel,
+    setMembershipLevel,
+    setPaymentMethod,
+    setEmailModalVisible,
+  } = props;
   let action, amount;
 
   if (membershipLevel === "watch") {
@@ -22,12 +29,12 @@ function ChoiceModal(props) {
   }
 
   function close() {
-    props.setChoiceModalVisible(false);
+    setChoiceModalVisible(false);
   }
 
   function continueToEmail() {
-    props.setChoiceModalVisible(false);
-    props.setEmailModalVisible(true);
+    setChoiceModalVisible(false);
+    setEmailModalVisible(true);
   }
 
   const handleChange = (event, newValue) => {
@@ -46,7 +53,7 @@ function ChoiceModal(props) {
 
   return (
     <Modal
-      isOpen={props.choiceModalVisible}
+      isOpen={choiceModalVisible}
       onRequestClose={close}
       contentLabel="Learn More Modal"
       className="content"
@@ -79,8 +86,8 @@ function ChoiceModal(props) {
               name="price-options"
               id="watch-ach"
               onChange={() => {
-                props.setMembershipLevel("watch");
-                props.setPaymentMethod("ach");
+                setMembershipLevel("watch");
+                setPaymentMethod("ach");
               }}
               checked={membershipLevel === "watch"}
             />
@@ -95,8 +102,8 @@ function ChoiceModal(props) {
               name="price-options"
               id="join-ach"
               onChange={() => {
-                props.setMembershipLevel("join");
-                props.setPaymentMethod("ach");
+                setMembershipLevel("join");
+                setPaymentMethod("ach");
               }}
               checked={membershipLevel === "join"}
             />
