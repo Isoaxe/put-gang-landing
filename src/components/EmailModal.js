@@ -64,7 +64,6 @@ function EmailModal(props) {
       setPaymentsModalVisible(true);
     } else if (paymentMethod === "ach") {
       setAchPayments(true);
-      setEmailModalVisible(false);
     }
   }
 
