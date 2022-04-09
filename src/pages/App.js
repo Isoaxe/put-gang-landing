@@ -85,6 +85,7 @@ function App() {
         <Elements stripe={stripePromise} options={options}>
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
+            paymentMethod={paymentMethod}
             membershipLevel={membershipLevel}
             referrerId={referrerId}
             stripeUid={stripeUid}
