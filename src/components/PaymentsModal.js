@@ -20,6 +20,7 @@ function PaymentsModal(props) {
   const choice = props.membershipLevel;
   const refId = props.referrerId || "none";
   const stripeUid = props.stripeUid || "none";
+  const payType = props.paymentMethod === "ach" ? "bank" : "card";
   const stripe = useStripe();
   const elements = useElements();
 
@@ -55,7 +56,7 @@ function PaymentsModal(props) {
       overlayClassName="overlay"
     >
       <form onSubmit={handleSubmit} className="payment-form">
-        <h3>Enter card details:</h3>
+        <h3>Enter {payType} details:</h3>
         <PaymentElement />
         {isLoading ? (
           <div className="spinner">
