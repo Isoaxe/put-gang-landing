@@ -35,6 +35,7 @@ function EmailModal(props) {
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
+  const payType = paymentMethod === "ach" ? "us_bank_account" : "card";
 
   function close() {
     setEmailModalVisible(false);
@@ -54,7 +55,7 @@ function EmailModal(props) {
     const { client_secret, payment_intent_id } = await createSubscription(
       priceId,
       stripe_uid,
-      paymentMethod
+      payType
     );
     setClientSecret(client_secret);
     setStripeUid(stripe_uid);
