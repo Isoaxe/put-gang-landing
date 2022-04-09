@@ -73,12 +73,8 @@ function EmailModal(props) {
     setPaymentIntentId(payment_intent_id);
     await changePaymentType(paymentMethod);
     setIsLoading(false);
-    if (paymentMethod === "card") {
-      setEmailModalVisible(false);
-      setPaymentsModalVisible(true);
-    } else if (paymentMethod === "ach") {
-      setAchPayments(true);
-    }
+    setEmailModalVisible(false);
+    setPaymentsModalVisible(true);
   }
 
   const saveBankAccount = useCallback(async () => {
