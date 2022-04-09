@@ -66,7 +66,8 @@ function EmailModal(props) {
     const { stripe_uid } = await createCustomer(email);
     const { client_secret, payment_intent_id } = await createSubscription(
       priceId,
-      stripe_uid
+      stripe_uid,
+      paymentMethod
     );
     setClientSecret(client_secret);
     setStripeUid(stripe_uid);
