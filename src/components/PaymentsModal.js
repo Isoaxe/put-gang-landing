@@ -64,7 +64,7 @@ function PaymentsModal(props) {
         ) : (
           <div className="modal-button-container">
             <button id="submit" disabled={isLoading || !stripe || !elements}>
-              Pay Now
+              Join Now
             </button>
           </div>
         )}
