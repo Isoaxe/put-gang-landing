@@ -48,19 +48,6 @@ function EmailModal(props) {
     }
   }
 
-  async function changePaymentType(stripeUid, type) {
-    const method = type === "ach" ? "us_bank_account" : "card";
-    const fetchConfig = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ stripeUid, method }),
-    };
-    await fetch(`${API_URL}/stripe/payment-type`, fetchConfig);
-  }
-
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
@@ -72,7 +59,6 @@ function EmailModal(props) {
     setClientSecret(client_secret);
     setStripeUid(stripe_uid);
     setPaymentIntentId(payment_intent_id);
-    await changePaymentType(stripe_uid, paymentMethod);
     setIsLoading(false);
     setEmailModalVisible(false);
     setPaymentsModalVisible(true);
