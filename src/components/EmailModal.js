@@ -104,14 +104,6 @@ function EmailModal(props) {
     checkEmail();
   });
 
-  useEffect(() => {
-    async function runBanking() {
-      const { bank_account_id } = await saveBankAccount();
-      await makeAchPayment(bank_account_id);
-    }
-    if (tokensExchanged) runBanking();
-  }, [saveBankAccount, makeAchPayment, tokensExchanged]);
-
   return (
     <Modal
       isOpen={emailModalVisible}
