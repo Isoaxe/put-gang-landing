@@ -65,17 +65,6 @@ function EmailModal(props) {
     setPaymentsModalVisible(true);
   }
 
-  const saveBankAccount = useCallback(async () => {
-    const fetchConfig = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plaidAccountId, stripeUid }),
-    };
-    const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-  }, [plaidAccountId, stripeUid]);
-
   const makeAchPayment = useCallback(
     async (bankAccountId) => {
       const fetchConfig = {
