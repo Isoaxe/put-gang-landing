@@ -1,20 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from "@mui/material";
-import PlaidLink from "./PlaidLink";
 import { createCustomer, createSubscription } from "./../util/stripe";
 import { disableButtonContainer } from "./../util/helpers";
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from "./../util/constants";
-import { API_URL, CONSOLE_URL } from "./../util/urls";
 import "./css/EmailModal.css";
 import "./css/shared.css";
 
 function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
-  const [achPayments, setAchPayments] = useState(false);
-  const [tokensExchanged, setTokensExchanged] = useState(false);
-  const [plaidAccountId, setPlaidAccountId] = useState("");
-  const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
   const {
@@ -22,12 +16,10 @@ function EmailModal(props) {
     setEmailModalVisible,
     setPaymentsModalVisible,
     membershipLevel,
-    referrerId,
     paymentMethod,
     setClientSecret,
     email,
     setEmail,
-    stripeUid,
     setStripeUid,
     isLoading,
     setIsLoading,
@@ -52,14 +44,13 @@ function EmailModal(props) {
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
-    const { client_secret, payment_intent_id } = await createSubscription(
+    const { client_secret } = await createSubscription(
       priceId,
       stripe_uid,
       payType
     );
     setClientSecret(client_secret);
     setStripeUid(stripe_uid);
-    setPaymentIntentId(payment_intent_id);
     setIsLoading(false);
     setEmailModalVisible(false);
     setPaymentsModalVisible(true);
