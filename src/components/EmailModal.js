@@ -65,29 +65,6 @@ function EmailModal(props) {
     setPaymentsModalVisible(true);
   }
 
-  const makeAchPayment = useCallback(
-    async (bankAccountId) => {
-      const fetchConfig = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bankAccountId, paymentIntentId }),
-      };
-      const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
-      const jsonResponse = await response.json();
-      setIsLoading(false);
-      console.log(jsonResponse);
-      window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
-    },
-    [
-      paymentIntentId,
-      setIsLoading,
-      referrerId,
-      membershipLevel,
-      stripeUid,
-      email,
-    ]
-  );
-
   useEffect(() => {
     disableButtonContainer();
     checkEmail();
