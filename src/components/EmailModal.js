@@ -1,20 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TextField, CircularProgress } from "@mui/material";
-import PlaidLink from "./PlaidLink";
 import { createCustomer, createSubscription } from "./../util/stripe";
 import { disableButtonContainer } from "./../util/helpers";
 import { STRIPE_WATCH_ID, STRIPE_JOIN_ID } from "./../util/constants";
-import { API_URL, CONSOLE_URL } from "./../util/urls";
 import "./css/EmailModal.css";
 import "./css/shared.css";
 
 function EmailModal(props) {
   const [emailOk, setEmailOk] = useState(false);
-  const [achPayments, setAchPayments] = useState(false);
-  const [tokensExchanged, setTokensExchanged] = useState(false);
-  const [plaidAccountId, setPlaidAccountId] = useState("");
-  const [paymentIntentId, setPaymentIntentId] = useState("");
 
   Modal.setAppElement("#root");
   const {
@@ -22,12 +16,10 @@ function EmailModal(props) {
     setEmailModalVisible,
     setPaymentsModalVisible,
     membershipLevel,
-    referrerId,
     paymentMethod,
     setClientSecret,
     email,
     setEmail,
-    stripeUid,
     setStripeUid,
     isLoading,
     setIsLoading,
@@ -35,6 +27,7 @@ function EmailModal(props) {
   let priceId;
   if (membershipLevel === "watch") priceId = STRIPE_WATCH_ID;
   if (membershipLevel === "join") priceId = STRIPE_JOIN_ID;
+  const payType = paymentMethod === "ach" ? "us_bank_account" : "card";
 
   function close() {
     setEmailModalVisible(false);
@@ -51,68 +44,22 @@ function EmailModal(props) {
   async function continueToPayments() {
     setIsLoading(true);
     const { stripe_uid } = await createCustomer(email);
-    const { client_secret, payment_intent_id } = await createSubscription(
+    const { client_secret } = await createSubscription(
       priceId,
-      stripe_uid
+      stripe_uid,
+      payType
     );
     setClientSecret(client_secret);
     setStripeUid(stripe_uid);
-    setPaymentIntentId(payment_intent_id);
     setIsLoading(false);
-    if (paymentMethod === "card") {
-      setEmailModalVisible(false);
-      setPaymentsModalVisible(true);
-    } else if (paymentMethod === "ach") {
-      setAchPayments(true);
-    }
+    setEmailModalVisible(false);
+    setPaymentsModalVisible(true);
   }
-
-  const saveBankAccount = useCallback(async () => {
-    const fetchConfig = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plaidAccountId, stripeUid }),
-    };
-    const response = await fetch(API_URL + "/plaid/save-bank", fetchConfig);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-  }, [plaidAccountId, stripeUid]);
-
-  const makeAchPayment = useCallback(
-    async (bankAccountId) => {
-      const fetchConfig = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bankAccountId, paymentIntentId }),
-      };
-      const response = await fetch(API_URL + "/stripe/payment", fetchConfig);
-      const jsonResponse = await response.json();
-      setIsLoading(false);
-      console.log(jsonResponse);
-      window.location.href = `${CONSOLE_URL}/session/signup?refId=${referrerId}&membLvl=${membershipLevel}&stripeUid=${stripeUid}&email=${email}`;
-    },
-    [
-      paymentIntentId,
-      setIsLoading,
-      referrerId,
-      membershipLevel,
-      stripeUid,
-      email,
-    ]
-  );
 
   useEffect(() => {
     disableButtonContainer();
     checkEmail();
   });
-
-  useEffect(() => {
-    async function runBanking() {
-      const { bank_account_id } = await saveBankAccount();
-      await makeAchPayment(bank_account_id);
-    }
-    if (tokensExchanged) runBanking();
-  }, [saveBankAccount, makeAchPayment, tokensExchanged]);
 
   return (
     <Modal
@@ -123,13 +70,6 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink
-          achPayments={achPayments}
-          setAchPayments={setAchPayments}
-          setTokensExchanged={setTokensExchanged}
-          setPlaidAccountId={setPlaidAccountId}
-          setIsLoading={setIsLoading}
-        />
         <h3>Enter your email:</h3>
         <TextField
           label="email"

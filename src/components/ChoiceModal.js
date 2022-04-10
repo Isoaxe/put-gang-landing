@@ -68,7 +68,7 @@ function ChoiceModal(props) {
         </header>
         {paymentChoice && (
           <Tabs value={tabValue} onChange={handleChange} variant="fullWidth">
-            <Tab label="Join with Plaid" />
+            <Tab label="Join with Bank" />
             <Tab label="Join with Card" />
           </Tabs>
         )}

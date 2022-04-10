@@ -16,11 +16,11 @@ export async function createCustomer(email) {
 }
 
 // Create a subscription in Stripe.
-export async function createSubscription(priceId, customerId) {
+export async function createSubscription(priceId, customerId, payType) {
   const fetchConfig = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ priceId, customerId }),
+    body: JSON.stringify({ priceId, customerId, payType }),
   };
   const response = await fetch(`${API_URL}/stripe/subscription`, fetchConfig);
   const jsonResponse = await response.json();

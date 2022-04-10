@@ -71,10 +71,8 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
         membershipLevel={membershipLevel}
-        referrerId={referrerId}
         paymentMethod={paymentMethod}
         setClientSecret={setClientSecret}
-        stripeUid={stripeUid}
         setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
@@ -85,6 +83,7 @@ function App() {
         <Elements stripe={stripePromise} options={options}>
           <PaymentsModal
             paymentsModalVisible={paymentsModalVisible}
+            paymentMethod={paymentMethod}
             membershipLevel={membershipLevel}
             referrerId={referrerId}
             stripeUid={stripeUid}
