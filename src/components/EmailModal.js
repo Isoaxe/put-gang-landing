@@ -113,13 +113,6 @@ function EmailModal(props) {
       overlayClassName="overlay"
     >
       <div>
-        <PlaidLink
-          achPayments={achPayments}
-          setAchPayments={setAchPayments}
-          setTokensExchanged={setTokensExchanged}
-          setPlaidAccountId={setPlaidAccountId}
-          setIsLoading={setIsLoading}
-        />
         <h3>Enter your email:</h3>
         <TextField
           label="email"
