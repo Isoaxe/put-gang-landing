@@ -71,10 +71,8 @@ function App() {
         setEmailModalVisible={setEmailModalVisible}
         setPaymentsModalVisible={setPaymentsModalVisible}
         membershipLevel={membershipLevel}
-        referrerId={referrerId}
         paymentMethod={paymentMethod}
         setClientSecret={setClientSecret}
-        stripeUid={stripeUid}
         setStripeUid={setStripeUid}
         email={email}
         setEmail={setEmail}
