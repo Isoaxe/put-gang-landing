@@ -17,3 +17,11 @@ On clicking the `Learn More` button, a modal opens. There are two tabs, one for 
 ## Project Setup
 
 In the **put-gang-landing directory**, run the following commands:
+
+### `npm install`
+
+Install all of the Node dependencies for React and other third party packages used in the frontend.
+
+### `npm run start`
+
+Opens the browser at `localhost:3000` on the login page.
