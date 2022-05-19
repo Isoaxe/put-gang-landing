@@ -25,3 +25,5 @@ Install all of the Node dependencies for React and other third party packages us
 ### `npm run start`
 
 Opens the browser at `localhost:3000` on the login page.
+
+**_Further Note:_** The above is enough for the user interface. However, in order for the payments to function, a server is needed. This is located in `put-gang-console`, so see that repo for implementation details.
