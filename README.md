@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Put Gang Landing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Put Gang project is broken into two repositories: `put-gang-landing` and `put-gang-console`. The former is just a landing page from which the signup flow is initialized. The customer completes the Stripe payment flow from here via modals. Some data is then passed to `put-gang-console` via params, where the Firebase user is created. This gives access to a dashboard / console where either just `<Settings/>` are displayed (for junior users) or full MLM access (for senior users).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Landing Page Functionality
 
-### `npm start`
+The [landing page](https://put-gang-landing.web.app/) that comprises of the `put-gang-landing` repo is a single page application. It contains some text and a video plus several buttons. Three of these are `Learn More` buttons which all initialize the payments flow, albeit with different default selections. The last one is a `Login` button that redirects the user to the signin page of `put-gang-console`. This can be used if the user has already created an account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Making Payments
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+On clicking the `Learn More` button, a modal opens. There are two tabs, one for ACH (bank) payments and another for card payments. Both payment types are executed via Stripe. Each tab has options for selecting one of two membership levels via radio buttons. After the selection has been made, the next page of the modal opens and the user enters their email address and selects `Continue`. This creates a Stripe `customer` and `subscription` for the user associated with that email address. A new modal page opens where the user can select their bank from a list (in the case of ACH payments) or else enter their card details if paying that way. For ACH payments, a separate Stripe sub-modal opens whereby the user can authorise their bank to link a nominated account with Stripe and set up a direct debit. After clicking the `Join Now` button, the payments flow completes and the user is redirected to `put-gang-console` where they can enter a password and create a Firebase account for access to the admin console.
 
-### `npm test`
+-----------------------------------------------------------------------------
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Project Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the **put-gang-landing directory**, run the following commands:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install all of the Node dependencies for React and other third party packages used in the frontend.
 
-### `npm run eject`
+### `npm run start`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Opens the browser at `localhost:3000` on the login page.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**_Further Note:_** The above is enough for the user interface. However, in order for the payments to function, a server is needed. This is located in `put-gang-console`, so see that repo for implementation details.
